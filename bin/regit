@@ -1,0 +1,25 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.14
+
+fn=${1}
+
+if [ -z "${fn}" ]; then
+    echo "parameter is empty!"
+    exit 1
+fi
+
+echo "file is ${fn}"
+
+if [ ! -f ${fn} ]; then
+     echo "${fn} doesn't exist"
+     exit 1
+fi
+
+echo "rm -f ${fn}"
+rm -f ${fn} || exit 1
+
+echo "git checkout ${fn}"
+git checkout ${fn} || exit 1
+
+echo "done"

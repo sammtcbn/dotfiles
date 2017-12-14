@@ -1,0 +1,15 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.14
+
+parameter=${1}
+
+if [ -z "${parameter}" ]; then
+    echo "parameter is empty!"
+    exit 1
+fi
+
+echo "git diff ${parameter}"
+git diff ${parameter} || exit 1
+
+echo "done"

@@ -1,0 +1,11 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.15
+PASSWORD=
+
+if [ -z "${PASSWORD}" ]; then
+    echo "PASSWORD is empty!"
+    exit 1
+fi
+
+sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null samlin@192.168.16.137

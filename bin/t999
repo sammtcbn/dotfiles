@@ -1,0 +1,12 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.15
+ip=192.168.99.9
+ping -w 1 $ip
+ret=$?
+if [ "$ret" == 0 ]; then
+    echo "$ip is alive"
+    telnet $ip
+else
+    echo "$ip is not alive"
+fi

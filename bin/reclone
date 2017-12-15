@@ -1,0 +1,34 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.15
+
+repodir=${1}
+gitconfig=${1}/.git/config
+
+if [ -z "${repodir}" ]; then
+    echo "parameter is empty!"
+    exit 1
+fi
+
+if [ ! -f ${gitconfig} ]; then
+     echo "${gitconfig} doesn't exist"
+     exit 1
+fi
+
+repourl=`grep url ${gitconfig} | cut -d' ' -f 3`
+
+if [ -z "${repourl}" ]; then
+    echo "url is empty!"
+    exit 1
+fi
+
+echo "url is ${repourl}"
+echo "git config is ${gitconfig}"
+
+echo "rm -rf $repodir ..."
+rm -rf $repodir || exit 1
+
+echo "git clone $repourl ..."
+git clone $repourl || exit 1
+
+echo "done"

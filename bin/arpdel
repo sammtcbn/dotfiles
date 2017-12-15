@@ -1,0 +1,10 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.15
+echo "sudo arp -d 192.168.99.8"
+sudo arp -d 192.168.99.8
+
+echo 
+
+echo "sudo arp -d 192.168.99.9"
+sudo arp -d 192.168.99.9

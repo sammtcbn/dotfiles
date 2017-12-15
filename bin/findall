@@ -1,0 +1,5 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.15
+find . -type f | xargs grep "${1}" | grep -v ".git"
+#find . -type f -name .git -prune -o -print | xargs grep "${1}"

@@ -1,0 +1,55 @@
+#!/bin/sh
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.26
+USER=$1
+
+show_usage ()
+{
+  echo Usage: ipcrmbat [user name] [sem/msg/shm/all]
+}
+
+rm_sem ()
+{
+  SEM=`ipcs -s | grep $USER | awk '{print $1}'`
+  for X in $SEM
+  do
+    ipcrm -S $X
+    echo semaphore $X deleted.
+  done
+}
+
+rm_msg ()
+{
+  MSQ=`ipcs -q | grep $USER | awk '{print $1}'`
+  for X in $MSQ
+  do
+    ipcrm -Q $X
+    echo message $X deleted.
+  done
+}
+
+rm_shm ()
+{
+  SHM=`ipcs -m | grep $USER | awk '{print $1}'`
+  for X in $SHM
+  do
+    ipcrm -M $X
+    echo shared-memory $X deleted.
+  done
+}
+
+all ()
+{
+  rm_sem
+  rm_msg
+  rm_shm
+}
+
+show_usage
+
+case "$2" in
+  all    ) all;;
+  sem    ) rm_sem;;
+  msg    ) rm_msg;;
+  shm    ) rm_shm;;
+esac

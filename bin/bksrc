@@ -1,0 +1,33 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2018.3.28
+
+destdir=sammtcbn-src-$(date '+%Y%m%d')
+destfile="$destdir".tar.gz
+
+if [ -d "$destdir" ]; then
+  echo "rm -rf $destdir"
+  rm -rf $destdir || exit 1
+fi
+echo "mkdir -p $destdir"
+mkdir -p $destdir || exit 1
+
+if [ -e $destfile ]; then
+  echo "rm -f $destfile"
+  rm -f $destfile || exit 1
+fi
+
+cd $destdir || exit 1
+
+git clone https://github.com/sammtcbn/dotfiles.git
+git clone https://github.com/sammtcbn/spe.git
+git clone https://github.com/sammtcbn/fpjson.git
+git clone https://github.com/sammtcbn/libreadini.git
+
+git clone http://Sam35.Lin@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git
+
+cd .. || exit 1
+
+tar zcfv $destfile $destdir
+
+ls -la $destfile

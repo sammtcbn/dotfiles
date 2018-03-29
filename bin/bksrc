@@ -5,6 +5,25 @@
 destdir=sammtcbn-src-$(date '+%Y%m%d')
 destfile="$destdir".tar.gz
 
+function init_svn_env() {
+  SVNAUTHFILE=~/.advsvn
+  if [ -f ${SVNAUTHFILE} ]; then
+    ADV_SVN_ID=`cat ${SVNAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+    ADV_SVN_PW=`cat ${SVNAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+  fi
+}
+
+function init_gitlab_env() {
+  GITLABAUTHFILE=~/.advgitlab
+  if [ -f ${GITLABAUTHFILE} ]; then
+    ADV_GITLAB_ID=`cat ${GITLABAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+    ADV_GITLAB_PW=`cat ${GITLABAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+  fi
+}
+
+init_svn_env
+init_gitlab_env
+
 if [ -d "$destdir" ]; then
   echo "rm -rf $destdir"
   rm -rf $destdir || exit 1
@@ -24,7 +43,11 @@ git clone https://github.com/sammtcbn/spe.git || exit 1
 git clone https://github.com/sammtcbn/fpjson.git || exit 1
 git clone https://github.com/sammtcbn/libreadini.git || exit 1
 
-git clone http://Sam35.Lin@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git || exit 1
+if [ -n "$ADV_GITLAB_ID" ] && [ -n "$ADV_GITLAB_PW" ]; then
+  git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git || exit 1
+else
+  git clone http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git || exit 1
+fi
 
 cd .. || exit 1
 

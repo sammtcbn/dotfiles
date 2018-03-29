@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.3.28
+# Written by sammtcbn 2018.3.29
 
 destdir=sammtcbn-src-$(date '+%Y%m%d')
 destfile="$destdir".tar.gz
@@ -19,12 +19,12 @@ fi
 
 cd $destdir || exit 1
 
-git clone https://github.com/sammtcbn/dotfiles.git
-git clone https://github.com/sammtcbn/spe.git
-git clone https://github.com/sammtcbn/fpjson.git
-git clone https://github.com/sammtcbn/libreadini.git
+git clone https://github.com/sammtcbn/dotfiles.git || exit 1
+git clone https://github.com/sammtcbn/spe.git || exit 1
+git clone https://github.com/sammtcbn/fpjson.git || exit 1
+git clone https://github.com/sammtcbn/libreadini.git || exit 1
 
-git clone http://Sam35.Lin@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git
+git clone http://Sam35.Lin@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git || exit 1
 
 cd .. || exit 1
 

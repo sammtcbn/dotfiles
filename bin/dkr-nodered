@@ -1,0 +1,4 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2018.3.31
+docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker

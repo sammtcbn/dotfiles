@@ -1,0 +1,21 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# run a command multiple times
+# Written by sammtcbn 2018.5.10
+# refer to https://serverfault.com/questions/273238/how-to-run-a-command-multiple-times-using-bash-shell
+
+function usage()
+{
+    echo "$0 [number] [command]"
+    exit 0
+}
+
+if [ -z "${1}" ] || [ -z "${2}" ]; then
+    usage
+fi
+
+number=$1
+shift
+for i in `seq $number`; do
+    $@
+done

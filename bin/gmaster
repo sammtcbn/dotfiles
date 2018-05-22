@@ -4,3 +4,4 @@
 
 echo "git checkout master"
 git checkout master
+git branch -l

@@ -4,3 +4,4 @@
 
 echo "git checkout develop"
 git checkout develop
+git branch -l

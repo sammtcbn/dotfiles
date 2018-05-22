@@ -1,0 +1,26 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2018.5.22
+
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage: ${ME} [tag name]"
+    exit 1
+}
+
+tagname=${1}
+
+if [ -z "${1}" ]; then
+    usage
+else
+    tagname=${1}
+fi
+
+echo "git push origin :refs/tags/${tagname}"
+git push origin :refs/tags/${tagname}
+
+echo "git tag -d ${tagname}"
+git tag -d ${tagname}
+
+echo "done"

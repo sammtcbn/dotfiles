@@ -24,5 +24,9 @@ fi
 
 for i in `seq $number`; do
     $cmd
+    echo "$i/$number"
+    if [ "$i" == "$number" ]; then
+        break
+    fi
     sleep $interval
 done

@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.3.29
+# Written by sammtcbn 2018.6.15
 
 destdir=sammtcbn-src-$(date '+%Y%m%d')
 destfile="$destdir".tar.gz
@@ -42,6 +42,7 @@ git clone https://github.com/sammtcbn/dotfiles.git || exit 1
 git clone https://github.com/sammtcbn/spe.git || exit 1
 git clone https://github.com/sammtcbn/fpjson.git || exit 1
 git clone https://github.com/sammtcbn/libreadini.git || exit 1
+git clone https://github.com/sammtcbn/logshow.git || exit 1
 
 if [ -n "$ADV_GITLAB_ID" ] && [ -n "$ADV_GITLAB_PW" ]; then
   git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git || exit 1

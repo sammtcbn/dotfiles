@@ -1,0 +1,37 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2018.6.15
+# refer to https://unix.stackexchange.com/questions/195279/how-to-grep-for-specific-time-period-in-a-log
+
+function usage()
+{
+    echo "$0 [logfile] [start date] [start time] [end date] [end time]"
+    echo "example:"
+    echo "    $0 /var/log/syslog 20180615 10:01:02 20180615 12:03:04"
+    exit 0
+}
+
+argc=$#
+argv=($@)
+
+if [ $argc -le 4 ]; then
+    usage
+fi
+
+logfile=${1}
+startdate=${2}
+starttime=${3}
+enddate=${4}
+endtime=${5}
+
+limit1=$(date -d "${startdate} ${starttime}" +"%s")
+limit2=$(date -d "${enddate} ${endtime}" +"%s")
+
+while read -r month date time logline
+do
+    logsec=$(date -d "$month $date $time" +"%s")
+    if [ $limit1 -le $logsec ] && [ $limit2 -ge $logsec ]; then
+        echo $month $date $time $logline
+    fi
+done < ${logfile}
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2018.6.28
+
+sudo truncate -s 0 /var/log/syslog

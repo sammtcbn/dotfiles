@@ -1,12 +1,14 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
 # run a command multiple times
-# Written by sammtcbn 2018.6.12
+# Written by sammtcbn 2018.7.6
 # refer to https://serverfault.com/questions/273238/how-to-run-a-command-multiple-times-using-bash-shell
 
 function usage()
 {
     echo "$0 [command] [number] [interval]"
+    echo "  number: run times, -1 for infinite loop"
+    echo "  interval: interval second"
     exit 0
 }
 
@@ -21,6 +23,19 @@ interval=0
 if [ ! -z "${3}" ]; then
     interval=$3
 fi
+
+if [ $number -eq -1 ]; then
+    seq=1
+    while :
+    do
+        $cmd
+        echo "$seq/"
+        sleep $interval
+        seq=$(($seq + 1))
+    done
+    exit 0
+fi
+
 
 for i in `seq $number`; do
     $cmd

@@ -1,0 +1,4 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2018.7.13
+find . -type f -name Thumbs.db -exec rm {} \;

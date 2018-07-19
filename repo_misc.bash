@@ -22,3 +22,5 @@ git_src samba         https://github.com/samba-team/samba.git
 git_src libwebsockets https://github.com/warmcat/libwebsockets.git 
 git_src opencv        https://github.com/opencv/opencv.git
 git_src linux         https://github.com/torvalds/linux.git
+git_src httpd         https://github.com/apache/httpd.git
+git_src wget          https://git.savannah.gnu.org/git/wget.git

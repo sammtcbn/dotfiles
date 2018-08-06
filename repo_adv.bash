@@ -18,7 +18,15 @@ function git_src() {
 TOPDIR=~/repo_adv
 mkdir -p ${TOPDIR}
 
+git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
+
+git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
+
 git_src ePack              http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ePack.git
+
+git_src MQTTBroker         http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/MQTTBroker.git
+
+git_src WISE-3610_downlink http://advgitlab.eastasia.cloudapp.azure.com/WISE-IoT/WISE-3610_downlink.git
 
 git_src WAPI               http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/WAPI.git
 

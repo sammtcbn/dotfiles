@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.6
+# Written by sammtcbn 2018.8.7
 
 function git_src() {
     folder=$1
@@ -21,6 +21,8 @@ mkdir -p ${TOPDIR}
 git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
+
+git_src ReyaxSol           http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git
 
 git_src ePack              http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ePack.git
 

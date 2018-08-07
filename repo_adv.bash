@@ -21,6 +21,19 @@ function git_src() {
     fi
 }
 
+function svn_src() {
+    folder=$1
+    url=$2
+    echo "${url} ..."
+    if [ ! -d "${TOPDIR}/${folder}" ]; then
+        cd $TOPDIR || exit 1
+        svn co --username $ADV_SVN_ID $url --password $ADV_SVN_PW || exit 1
+    else
+       cd ${TOPDIR}/${folder} || exit 1
+       svn up || exit 1
+    fi
+}
+
 TOPDIR=~/repo_adv
 mkdir -p ${TOPDIR}
 
@@ -41,3 +54,5 @@ git_src WAPI               http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.a
 git_src EI-Connect         http://advgitlab.eastasia.cloudapp.azure.com/EI-Connect/EI-Connect.git
 
 git_src RMM-EI-Agent       http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/EI-PaaS-RMM/RMM-EI-Agent.git
+
+svn_src CAgentIoT          https://172.20.2.44/svn/SUSIAccess/SA3.1/trunk/Agent/CAgentIoT

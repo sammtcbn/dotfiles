@@ -2,6 +2,12 @@
 # https://github.com/sammtcbn/dotfiles
 # Written by sammtcbn 2018.8.7
 
+ADV_GITLAB_ID=
+ADV_GITLAB_PW=
+
+ADV_SVN_ID=
+ADV_SVN_PW=
+
 function git_src() {
     folder=$1
     url=$2
@@ -22,16 +28,16 @@ git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
 
-git_src ReyaxSol           http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git
+git_src ReyaxSol           http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol.git
 
-git_src ePack              http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ePack.git
+git_src ePack              http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ePack.git
 
-git_src MQTTBroker         http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/MQTTBroker.git
+git_src MQTTBroker         http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/MQTTBroker.git
 
-git_src WISE-3610_downlink http://advgitlab.eastasia.cloudapp.azure.com/WISE-IoT/WISE-3610_downlink.git
+git_src WISE-3610_downlink http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/WISE-IoT/WISE-3610_downlink.git
 
-git_src WAPI               http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/WAPI.git
+git_src WAPI               http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/EdgeSense/WAPI.git
 
 git_src EI-Connect         http://advgitlab.eastasia.cloudapp.azure.com/EI-Connect/EI-Connect.git
 
-git_src RMM-EI-Agent       http://advgitlab.eastasia.cloudapp.azure.com/EI-PaaS-RMM/RMM-EI-Agent.git
+git_src RMM-EI-Agent       http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/EI-PaaS-RMM/RMM-EI-Agent.git

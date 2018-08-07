@@ -45,8 +45,10 @@ function advgitlab_src() {
     echo "${url} ..."
     if [ ! -d "${TOPDIR}/${folder}" ]; then
         cd $TOPDIR || exit 1
-#        git clone $url || exit 1
-        git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+        if [ -n "$ADV_GITLAB_ID" ] && [ -n "$ADV_GITLAB_PW" ]; then
+            git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+        else
+            git clone http://advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
     else
         cd ${TOPDIR}/${folder} || exit 1
         git pull || exit 1

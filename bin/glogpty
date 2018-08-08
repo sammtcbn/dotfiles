@@ -1,0 +1,4 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2018.8.8
+git log --pretty=oneline

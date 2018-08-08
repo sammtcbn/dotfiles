@@ -1,11 +1,12 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.5.22
+# Written by sammtcbn 2018.8.8
 
 ME=$(basename $0)
 
 function usage() {
     echo "Usage: ${ME} [tag name]"
+    echo "       ${ME} [tag name] [commit]"
     exit 1
 }
 
@@ -17,8 +18,17 @@ else
     tagname=${1}
 fi
 
-echo "git tag ${tagname}"
-git tag ${tagname}
+if [ ! -z "${2}" ]; then
+    commit=${2}
+fi
+
+if [ -z "${commit}" ]; then
+    echo "git tag ${tagname}"
+    git tag ${tagname}
+else
+    echo "git tag ${tagname} ${commit}"
+    git tag ${tagname} ${commit}
+fi
 
 echo "git push origin ${tagname}"
 git push origin ${tagname}

@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.7
+# Written by sammtcbn 2018.8.9
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -49,6 +49,7 @@ function advgitlab_src() {
             git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
         else
             git clone http://advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+        fi
     else
         cd ${TOPDIR}/${folder} || exit 1
         git pull || exit 1

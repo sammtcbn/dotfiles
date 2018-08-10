@@ -2,10 +2,10 @@
 # https://github.com/sammtcbn/dotfiles
 # Written by sammtcbn 2018.8.10
 
-ADV_GITLAB_ID=sam35.lin
+ADV_GITLAB_ID=
 ADV_GITLAB_PW=
 
-ADV_SVN_ID=sam35.lin@advantech.com.tw
+ADV_SVN_ID=
 ADV_SVN_PW=
 
 PROJECTNAME=repo_adv
@@ -90,6 +90,7 @@ advgitlab_src ePack              EdgeSense/ePack.git
 advgitlab_src MQTTBroker         EdgeSense/MQTTBroker.git
 advgitlab_src RMM-EI-Agent       EI-PaaS-RMM/RMM-EI-Agent.git
 advgitlab_src WAPI               EdgeSense/WAPI.git
+advgitlab_src Service-SDK        EdgeSense/Service-SDK.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 
 git_src EI-Connect         http://advgitlab.eastasia.cloudapp.azure.com/EI-Connect/EI-Connect.git

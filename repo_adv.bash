@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.9
+# Written by sammtcbn 2018.8.10
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -76,6 +76,7 @@ mkdir -p ${TOPDIR}
 git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
 
+advgitlab_src uartmgr            EdgeSense/uartmgr.git
 advgitlab_src ReyaxSol           EdgeSense/ReyaxSol.git
 advgitlab_src ePack              EdgeSense/ePack.git
 advgitlab_src MQTTBroker         EdgeSense/MQTTBroker.git

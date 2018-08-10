@@ -2,10 +2,10 @@
 # https://github.com/sammtcbn/dotfiles
 # Written by sammtcbn 2018.8.10
 
-ADV_GITLAB_ID=
+ADV_GITLAB_ID=sam35.lin
 ADV_GITLAB_PW=
 
-ADV_SVN_ID=
+ADV_SVN_ID=sam35.lin@advantech.com.tw
 ADV_SVN_PW=
 
 PROJECTNAME=repo_adv
@@ -47,6 +47,8 @@ function advgitlab_src() {
         cd $TOPDIR || exit 1
         if [ -n "$ADV_GITLAB_ID" ] && [ -n "$ADV_GITLAB_PW" ]; then
             git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+        elif [ -n "$ADV_GITLAB_ID" ]; then
+            git clone http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
         else
             git clone http://advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
         fi
@@ -63,7 +65,13 @@ function advsvn_src() {
     echo "${url} ..."
     if [ ! -d "${TOPDIR}/${folder}" ]; then
         cd $TOPDIR || exit 1
-        svn co --username $ADV_SVN_ID https://172.20.2.44/${url} --password $ADV_SVN_PW || exit 1
+        if [ -n "$ADV_SVN_ID" ] && [ -n "$ADV_SVN_PW" ]; then
+            svn co --username $ADV_SVN_ID https://172.20.2.44/${url} --password $ADV_SVN_PW || exit 1
+        elif [ -n "$ADV_SVN_ID" ]; then
+            svn co --username $ADV_SVN_ID https://172.20.2.44/${url} || exit 1
+        else
+            svn co https://172.20.2.44/${url} || exit 1
+        fi
     else
        cd ${TOPDIR}/${folder} || exit 1
        svn up || exit 1

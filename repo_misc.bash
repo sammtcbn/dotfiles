@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.2
+# Written by sammtcbn 2018.8.13
 
 function git_src() {
     folder=$1
@@ -24,4 +24,5 @@ git_src opencv        https://github.com/opencv/opencv.git
 git_src linux         https://github.com/torvalds/linux.git
 git_src httpd         https://github.com/apache/httpd.git
 git_src libmodbus     https://github.com/stephane/libmodbus.git
+git_src smartmontools https://github.com/smartmontools/smartmontools.git
 git_src wget          https://git.savannah.gnu.org/git/wget.git

@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.10
+# Written by sammtcbn 2018.8.13
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -88,9 +88,10 @@ advgitlab_src uartmgr            EdgeSense/uartmgr.git
 advgitlab_src ReyaxSol           EdgeSense/ReyaxSol.git
 advgitlab_src ePack              EdgeSense/ePack.git
 advgitlab_src MQTTBroker         EdgeSense/MQTTBroker.git
-advgitlab_src RMM-EI-Agent       EI-PaaS-RMM/RMM-EI-Agent.git
 advgitlab_src WAPI               EdgeSense/WAPI.git
 advgitlab_src Service-SDK        EdgeSense/Service-SDK.git
+advgitlab_src TowerLight-Sensor  EdgeSense/TowerLight-Sensor.git
+advgitlab_src RMM-EI-Agent       EI-PaaS-RMM/RMM-EI-Agent.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 
 git_src EI-Connect         http://advgitlab.eastasia.cloudapp.azure.com/EI-Connect/EI-Connect.git

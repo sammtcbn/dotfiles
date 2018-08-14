@@ -25,4 +25,5 @@ git_src linux         https://github.com/torvalds/linux.git
 git_src httpd         https://github.com/apache/httpd.git
 git_src libmodbus     https://github.com/stephane/libmodbus.git
 git_src smartmontools https://github.com/smartmontools/smartmontools.git
+git_src nginx         https://github.com/nginx/nginx.git
 git_src wget          https://git.savannah.gnu.org/git/wget.git

@@ -1,6 +1,24 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.13
+# Written by sammtcbn 2018.8.20
+
+PROJECTNAME=repo_misc
+
+while getopts "c" opt; do
+    case $opt in
+    c)
+       COMPRESS=1
+       ;;
+    esac
+done
+
+function do_compress() {
+    destfile=${PROJECTNAME}-$(date '+%Y%m%d').tar.gz
+    cd $TOPDIR/.. || exit 1
+    rm -f $destfile || exit 1
+    tar zcfv $destfile ${PROJECTNAME}
+    ls -la $destfile
+}
 
 function git_src() {
     folder=$1
@@ -15,7 +33,7 @@ function git_src() {
     fi
 }
 
-TOPDIR=~/repomisc
+TOPDIR=~/${PROJECTNAME}
 mkdir -p ${TOPDIR}
 
 git_src samba         https://github.com/samba-team/samba.git
@@ -27,3 +45,8 @@ git_src libmodbus     https://github.com/stephane/libmodbus.git
 git_src smartmontools https://github.com/smartmontools/smartmontools.git
 git_src nginx         https://github.com/nginx/nginx.git
 git_src wget          https://git.savannah.gnu.org/git/wget.git
+
+if [ "${COMPRESS}" == 1 ]; then
+    do_compress
+fi
+

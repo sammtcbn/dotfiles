@@ -45,6 +45,7 @@ git_src libmodbus     https://github.com/stephane/libmodbus.git
 git_src smartmontools https://github.com/smartmontools/smartmontools.git
 git_src nginx         https://github.com/nginx/nginx.git
 git_src curl          https://github.com/curl/curl.git
+git_src zlib          https://github.com/madler/zlib.git
 git_src wget          https://git.savannah.gnu.org/git/wget.git
 
 if [ "${COMPRESS}" == 1 ]; then

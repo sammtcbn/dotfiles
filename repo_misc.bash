@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.20
+# Written by sammtcbn 2018.8.27
 
 PROJECTNAME=repo_misc
 
@@ -44,6 +44,7 @@ git_src httpd         https://github.com/apache/httpd.git
 git_src libmodbus     https://github.com/stephane/libmodbus.git
 git_src smartmontools https://github.com/smartmontools/smartmontools.git
 git_src nginx         https://github.com/nginx/nginx.git
+git_src curl          https://github.com/curl/curl.git
 git_src wget          https://git.savannah.gnu.org/git/wget.git
 
 if [ "${COMPRESS}" == 1 ]; then

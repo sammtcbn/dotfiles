@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.24
+# Written by sammtcbn 2018.9.4
 
 PROJECTNAME=repo_sam
 
@@ -41,6 +41,7 @@ git_src spe           https://github.com/sammtcbn/spe.git
 git_src fpjson        https://github.com/sammtcbn/fpjson.git
 git_src libreadini    https://github.com/sammtcbn/libreadini.git
 git_src logshow       https://github.com/sammtcbn/logshow.git
+git_src sccu          https://github.com/sammtcbn/sccu.git
 
 if [ "${COMPRESS}" == 1 ]; then
     do_compress

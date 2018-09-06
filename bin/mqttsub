@@ -1,0 +1,11 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2018.9.6
+SERVER=localhost
+TOPIC="hellomqtt/topic"
+
+if [ ! -z "${1}" ]; then
+    SERVER=${1}
+fi
+
+mosquitto_sub -h ${SERVER} -t "hellomqtt/topic"

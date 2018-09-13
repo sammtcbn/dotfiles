@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.8.27
+# Written by sammtcbn 2018.9.13
 
 PROJECTNAME=repo_misc
 
@@ -46,6 +46,8 @@ git_src smartmontools https://github.com/smartmontools/smartmontools.git
 git_src nginx         https://github.com/nginx/nginx.git
 git_src curl          https://github.com/curl/curl.git
 git_src zlib          https://github.com/madler/zlib.git
+git_src paho.mqtt.c   https://github.com/eclipse/paho.mqtt.c.git
+git_src mosquitto     https://github.com/eclipse/mosquitto.git
 git_src wget          https://git.savannah.gnu.org/git/wget.git
 
 if [ "${COMPRESS}" == 1 ]; then

@@ -94,6 +94,7 @@ advgitlab_src TowerLight-Sensor  EdgeSense/TowerLight-Sensor.git
 advgitlab_src Modbus-Slave       EdgeSense/Modbus-Slave.git
 advgitlab_src RMM-EI-Agent       EI-PaaS-RMM/RMM-EI-Agent.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
+advgitlab_src Tools              WISE-IoT/Tools.git
 
 git_src EI-Connect         http://advgitlab.eastasia.cloudapp.azure.com/EI-Connect/EI-Connect.git
 

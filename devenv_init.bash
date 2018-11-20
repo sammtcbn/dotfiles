@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.6.8
+# Written by sammtcbn 2018.11.21
 apt update
 apt -y install git
 apt -y install build-essential
@@ -8,3 +8,4 @@ apt -y install build-essential
 apt -y install automake autoconf
 apt -y install libtool
 apt -y install cmake
+apt -y install subversion

@@ -1,0 +1,4 @@
+#!/bin/bash
+wget -O sccu.c https://raw.githubusercontent.com/sammtcbn/sccu/master/sccu.c || exit 1
+wget -O sccu.h https://raw.githubusercontent.com/sammtcbn/sccu/master/sccu.h || exit 1
+echo "done"

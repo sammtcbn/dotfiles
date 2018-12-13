@@ -93,6 +93,7 @@ advgitlab_src Service-SDK        EdgeSense/Service-SDK.git
 advgitlab_src TowerLight-Sensor  EdgeSense/TowerLight-Sensor.git
 advgitlab_src Modbus-Slave       EdgeSense/Modbus-Slave.git
 advgitlab_src AgentLite-Node.js  EdgeSense/AgentLite-Node.js.git
+advgitlab_src Alarm_msg_service  EdgeSense/Alarm_msg_service.git
 advgitlab_src RMM-EI-Agent       EI-PaaS-RMM/RMM-EI-Agent.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 advgitlab_src Tools              WISE-IoT/Tools.git

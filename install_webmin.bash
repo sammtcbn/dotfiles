@@ -20,4 +20,5 @@ wget http://www.webmin.com/jcameron-key.asc || exit 1
 apt-key add jcameron-key.asc || exit 1
 rm -f jcameron-key.asc || exit 1
 
+apt update
 apt -y install webmin

@@ -98,7 +98,7 @@ advgitlab_src AgentLite-Node.js  EdgeSense/AgentLite-Node.js.git
 advgitlab_src Alarm_msg_service  EdgeSense/Alarm_msg_service.git
 advgitlab_src RMM-EI-Agent       EI-PaaS-RMM/RMM-EI-Agent.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
-advgitlab_src Tools              WISE-IoT/Tools.git
+advgitlab_src AdvTools           WISE-IoT/AdvTools.git
 
 git_src EI-Connect         http://advgitlab.eastasia.cloudapp.azure.com/EI-Connect/EI-Connect.git
 

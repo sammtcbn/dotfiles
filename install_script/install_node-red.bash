@@ -8,6 +8,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 apt update
-apt-get -y install npm
+apt -y install nodejs
+apt -y install npm
 npm install -g --unsafe-perm node-red node-red-admin
 ufw allow 1880

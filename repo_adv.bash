@@ -86,6 +86,7 @@ git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
 git_src EI-Connect-Python  https://github.com/ADVANTECH-Corp/EI-Connect-Python.git
 git_src EI-Connect-Node.js https://github.com/ADVANTECH-Corp/EI-Connect-Node.js.git
 
+advgitlab_src device-snmp-nms-node.js EdgeSense/device-snmp-nms-node.js.git
 advgitlab_src uartmgr            EdgeSense/uartmgr.git
 advgitlab_src ReyaxSol           EdgeSense/ReyaxSol.git
 advgitlab_src ePack              EdgeSense/ePack.git

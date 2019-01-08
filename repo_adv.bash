@@ -1,9 +1,11 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.12.18
+# Written by sammtcbn 2019.1.8
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
+ADV_GITLAB_USE_HTTP=y
+ADV_GITLAB_USE_SSH=n
 
 ADV_SVN_ID=
 ADV_SVN_PW=
@@ -45,12 +47,16 @@ function advgitlab_src() {
     echo "${url} ..."
     if [ ! -d "${TOPDIR}/${folder}" ]; then
         cd $TOPDIR || exit 1
-        if [ -n "$ADV_GITLAB_ID" ] && [ -n "$ADV_GITLAB_PW" ]; then
-            git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
-        elif [ -n "$ADV_GITLAB_ID" ]; then
-            git clone http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
-        else
-            git clone http://advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+        if [ "${ADV_GITLAB_USE_HTTP}" == "y" ]; then
+            if [ -n "$ADV_GITLAB_ID" ] && [ -n "$ADV_GITLAB_PW" ]; then
+                git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+            elif [ -n "$ADV_GITLAB_ID" ]; then
+                git clone http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+            else
+                git clone http://advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+            fi
+        elif [ "${ADV_GITLAB_USE_SSH}" == "y" ]; then
+            git clone git@advgitlab.eastasia.cloudapp.azure.com:${url} || exit 1
         fi
     else
         cd ${TOPDIR}/${folder} || exit 1
@@ -85,7 +91,6 @@ git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
 git_src EI-Connect-Python  https://github.com/ADVANTECH-Corp/EI-Connect-Python.git
 git_src EI-Connect-Node.js https://github.com/ADVANTECH-Corp/EI-Connect-Node.js.git
-
 advgitlab_src device-snmp-nms-node.js EdgeSense/device-snmp-nms-node.js.git
 advgitlab_src uartmgr            EdgeSense/uartmgr.git
 advgitlab_src ReyaxSol           EdgeSense/ReyaxSol.git

@@ -10,7 +10,7 @@ function usage()
 }
 
 SERVER=localhost
-TOPIC="hellomqtt/topic"
+TOPIC="#"
 
 if [ ! -z "${1}" ]; then
     SERVER=${1}

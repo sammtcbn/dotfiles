@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.1.8
+# Written by sammtcbn 2019.1.9
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -19,6 +19,26 @@ while getopts "c" opt; do
        ;;
     esac
 done
+
+function load_advgitlab_account() {
+    GITLABAUTHFILE=~/.advgitlab
+    if [ -f ${GITLABAUTHFILE} ]; then
+        ADV_GITLAB_ID=`cat ${GITLABAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        ADV_GITLAB_PW=`cat ${GITLABAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+        #echo "ADV_GITLAB_ID = ${ADV_GITLAB_ID}"
+        #echo "ADV_GITLAB_PW = ${ADV_GITLAB_PW}"
+    fi
+}
+
+function load_advsvn_account() {
+    SVNAUTHFILE=~/.advsvn
+    if [ -f ${SVNAUTHFILE} ]; then
+        ADV_SVN_ID=`cat ${SVNAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        ADV_SVN_PW=`cat ${SVNAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+        #echo "ADV_SVN_ID = ${ADV_SVN_ID}"
+        #echo "ADV_SVN_PW = ${ADV_SVN_PW}"
+    fi
+}
 
 function do_compress() {
     destfile=${PROJECTNAME}-$(date '+%Y%m%d').tar.gz
@@ -86,6 +106,9 @@ function advsvn_src() {
 
 TOPDIR=~/${PROJECTNAME}
 mkdir -p ${TOPDIR}
+
+load_advgitlab_account
+load_advsvn_account
 
 git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git

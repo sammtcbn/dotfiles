@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.10.12
+# Written by sammtcbn 2019.1.18
 
 PROJECTNAME=repo_sam
 
@@ -43,6 +43,7 @@ git_src libreadini    https://github.com/sammtcbn/libreadini.git
 git_src logshow       https://github.com/sammtcbn/logshow.git
 git_src sccu          https://github.com/sammtcbn/sccu.git
 git_src advutil       https://github.com/sammtcbn/advutil.git
+git_src mqtt-show-msg https://github.com/sammtcbn/mqtt-show-msg.git
 
 if [ "${COMPRESS}" == 1 ]; then
     do_compress

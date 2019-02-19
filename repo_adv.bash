@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.2.14
+# Written by sammtcbn 2019.2.19
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -115,6 +115,7 @@ git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
 git_src EI-Connect-Python  https://github.com/ADVANTECH-Corp/EI-Connect-Python.git
 git_src EI-Connect-Node.js https://github.com/ADVANTECH-Corp/EI-Connect-Node.js.git
 advgitlab_src device-snmp-nms-node.js EdgeSense/device-snmp-nms-node.js.git
+advgitlab_src EdgeX-WiseAgent-Device  EdgeSense/EdgeX-WiseAgent-Device.git
 advgitlab_src uartmgr            EdgeSense/uartmgr.git
 advgitlab_src ReyaxSol           EdgeSense/ReyaxSol.git
 advgitlab_src ePack              EdgeSense/ePack.git
@@ -128,6 +129,7 @@ advgitlab_src Alarm_msg_service  EdgeSense/Alarm_msg_service.git
 advgitlab_src Mirai              EdgeSense/Mirai.git
 advgitlab_src advlog-node.js     EdgeSense-Open/advlog-node.js.git
 advgitlab_src RMM-EI-Agent       EI-PaaS-RMM/RMM-EI-Agent.git
+advgitlab_src RMM-EdgeX-Plugin   EI-PaaS-Plugin/EdgeX-Plugin.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 advgitlab_src AdvTools           WISE-IoT/AdvTools.git
 

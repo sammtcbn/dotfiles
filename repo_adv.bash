@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.2.19
+# Written by sammtcbn 2019.2.22
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -128,7 +128,8 @@ advgitlab_src AgentLite-Node.js  EdgeSense/AgentLite-Node.js.git
 advgitlab_src Alarm_msg_service  EdgeSense/Alarm_msg_service.git
 advgitlab_src Mirai              EdgeSense/Mirai.git
 advgitlab_src advlog-node.js     EdgeSense-Open/advlog-node.js.git
-advgitlab_src RMM-EI-Agent       EI-PaaS-RMM/RMM-EI-Agent.git
+advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/RMM-EI-Agent.git
+advgitlab_src RMM-EI-Agent_Installer EI-PaaS-RMM/RMM-EI-Agent_Installer.git
 advgitlab_src RMM-EdgeX-Plugin   EI-PaaS-Plugin/EdgeX-Plugin.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 advgitlab_src AdvTools           WISE-IoT/AdvTools.git

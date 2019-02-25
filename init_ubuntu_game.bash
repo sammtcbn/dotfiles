@@ -51,3 +51,7 @@ apt -y install bovo
 # install Gomoku.app
 # official website - http://www.gnustep.it/nicola/Applications/Gomoku/
 apt -y install gomoku.app
+
+# install Chromium B.S.U.
+# official website - http://chromium-bsu.sourceforge.net/
+apt -y install chromium-bsu

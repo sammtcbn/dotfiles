@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.2.22
+# Written by sammtcbn 2019.3.21
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -19,6 +19,16 @@ while getopts "c" opt; do
        ;;
     esac
 done
+
+function init_ubtroot_path() {
+    UBTROOT_SETTING=~/.ubtroot
+    if [ -f ${UBTROOT_SETTING} ]; then
+        UBTROOT=`cat ${UBTROOT_SETTING}`
+    else
+        UBTROOT=~
+    fi
+    #echo "UBTROOT = ${UBTROOT}"
+}
 
 function load_advgitlab_account() {
     GITLABAUTHFILE=~/.advgitlab
@@ -104,7 +114,8 @@ function advsvn_src() {
     fi
 }
 
-TOPDIR=~/${PROJECTNAME}
+init_ubtroot_path
+TOPDIR=${UBTROOT}/${PROJECTNAME}
 mkdir -p ${TOPDIR}
 
 load_advgitlab_account

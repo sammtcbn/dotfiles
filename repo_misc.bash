@@ -12,6 +12,16 @@ while getopts "c" opt; do
     esac
 done
 
+function init_ubtroot_path() {
+    UBTROOT_SETTING=~/.ubtroot
+    if [ -f ${UBTROOT_SETTING} ]; then
+        UBTROOT=`cat ${UBTROOT_SETTING}`
+    else
+        UBTROOT=~
+    fi
+    #echo "UBTROOT = ${UBTROOT}"
+}
+
 function do_compress() {
     destfile=${PROJECTNAME}-$(date '+%Y%m%d').tar.gz
     cd $TOPDIR/.. || exit 1
@@ -33,7 +43,8 @@ function git_src() {
     fi
 }
 
-TOPDIR=~/${PROJECTNAME}
+init_ubtroot_path
+TOPDIR=${UBTROOT}/${PROJECTNAME}
 mkdir -p ${TOPDIR}
 
 git_src samba         https://github.com/samba-team/samba.git

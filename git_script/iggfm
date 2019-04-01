@@ -1,0 +1,4 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2019.4.1
+git config core.filemode false

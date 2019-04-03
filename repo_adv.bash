@@ -141,7 +141,7 @@ advgitlab_src Mirai              EdgeSense/Mirai.git
 advgitlab_src advlog-node.js     EdgeSense-Open/advlog-node.js.git
 advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/RMM-EI-Agent.git
 advgitlab_src RMM-EI-Agent_Installer EI-PaaS-RMM/RMM-EI-Agent_Installer.git
-advgitlab_src RMM-EdgeX-Plugin      EI-PaaS-Plugin/EdgeX-Plugin.git
+advgitlab_src RMM-EdgeX-Plugin      EI-PaaS-Plugin/RMM-EdgeX-Plugin.git
 advgitlab_src LocalProvision-Plugin EI-PaaS-Plugin/LocalProvision-Plugin.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 advgitlab_src AdvTools           WISE-IoT/AdvTools.git

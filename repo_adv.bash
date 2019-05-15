@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.4.15
+# Written by sammtcbn 2019.5.15
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -127,6 +127,7 @@ git_src EI-Connect-Python  https://github.com/ADVANTECH-Corp/EI-Connect-Python.g
 git_src EI-Connect-Node.js https://github.com/ADVANTECH-Corp/EI-Connect-Node.js.git
 advgitlab_src device-snmp-nms-node.js EdgeSense/device-snmp-nms-node.js.git
 advgitlab_src device-opcua-client-node.js EdgeSense/device-opcua-client-node.js.git
+advgitlab_src device-poc_link-mgt-node.js EdgeSense/device-poc_link-mgt-node.js.git
 advgitlab_src EdgeX-WiseAgent-Device  EdgeSense/EdgeX-WiseAgent-Device.git
 advgitlab_src uartmgr            EdgeSense/uartmgr.git
 advgitlab_src ReyaxSol           EdgeSense/ReyaxSol.git

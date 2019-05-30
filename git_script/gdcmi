@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2017.12.14
+# Written by sammtcbn 2019.5.30
 
 ME=$(basename $0)
 
@@ -17,4 +17,4 @@ else
     commit=${1}
 fi
 
-git --no-pager diff ${commit}^ ${commit} || exit 1
+git diff ${commit}^ ${commit} || exit 1

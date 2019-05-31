@@ -135,24 +135,30 @@ function g_EI-Connect() {
   advgitlab_src EI-Connect-JNI     EI-Connect/EI-Connect-JNI.git
 }
 
+function g_EdgeSense() {
+  advgitlab_src AdvPlatform            EdgeSense/AdvPlatform.git
+  advgitlab_src AgentLite-Node.js      EdgeSense/AgentLite-Node.js.git
+  advgitlab_src Alarm_msg_service      EdgeSense/Alarm_msg_service.git
+  advgitlab_src EdgeX-WiseAgent-Device EdgeSense/EdgeX-WiseAgent-Device.git
+  advgitlab_src MQTTBroker         EdgeSense/MQTTBroker.git
+  advgitlab_src Mirai              EdgeSense/Mirai.git
+  advgitlab_src Modbus-Slave       EdgeSense/Modbus-Slave.git
+  advgitlab_src NodeRed_IoTGateway EdgeSense/NodeRed_IoTGateway.git
+  advgitlab_src PluginEditor       EdgeSense/PluginEditor.git
+  advgitlab_src ReyaxSol           EdgeSense/ReyaxSol.git
+  advgitlab_src Service-SDK        EdgeSense/Service-SDK.git
+  advgitlab_src TowerLight-Sensor  EdgeSense/TowerLight-Sensor.git
+  advgitlab_src WAPI               EdgeSense/WAPI.git
+  advgitlab_src device-opcua-client-node.js EdgeSense/device-opcua-client-node.js.git
+  advgitlab_src device-poc_link-mgt-node.js EdgeSense/device-poc_link-mgt-node.js.git
+  advgitlab_src device-snmp-nms-node.js     EdgeSense/device-snmp-nms-node.js.git
+  advgitlab_src ePack               EdgeSense/ePack.git
+  advgitlab_src poc_battery-app-wpf EdgeSense/poc_battery-app-wpf.git
+  advgitlab_src uartmgr             EdgeSense/uartmgr.git
+}
+
 git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
-advgitlab_src device-snmp-nms-node.js EdgeSense/device-snmp-nms-node.js.git
-advgitlab_src device-opcua-client-node.js EdgeSense/device-opcua-client-node.js.git
-advgitlab_src device-poc_link-mgt-node.js EdgeSense/device-poc_link-mgt-node.js.git
-advgitlab_src poc_battery-app-wpf EdgeSense/poc_battery-app-wpf.git
-advgitlab_src EdgeX-WiseAgent-Device  EdgeSense/EdgeX-WiseAgent-Device.git
-advgitlab_src uartmgr            EdgeSense/uartmgr.git
-advgitlab_src ReyaxSol           EdgeSense/ReyaxSol.git
-advgitlab_src ePack              EdgeSense/ePack.git
-advgitlab_src MQTTBroker         EdgeSense/MQTTBroker.git
-advgitlab_src WAPI               EdgeSense/WAPI.git
-advgitlab_src Service-SDK        EdgeSense/Service-SDK.git
-advgitlab_src TowerLight-Sensor  EdgeSense/TowerLight-Sensor.git
-advgitlab_src Modbus-Slave       EdgeSense/Modbus-Slave.git
-advgitlab_src AgentLite-Node.js  EdgeSense/AgentLite-Node.js.git
-advgitlab_src Alarm_msg_service  EdgeSense/Alarm_msg_service.git
-advgitlab_src Mirai              EdgeSense/Mirai.git
 advgitlab_src advlog-node.js     EdgeSense-Open/advlog-node.js.git
 advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/RMM-EI-Agent.git
 advgitlab_src RMM-EI-Agent_Installer EI-PaaS-RMM/RMM-EI-Agent_Installer.git
@@ -160,9 +166,8 @@ advgitlab_src EdgeX-Plugin       EI-PaaS-Plugin/EdgeX-Plugin.git
 advgitlab_src LocalProvision     EI-PaaS-Plugin/LocalProvision.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 advgitlab_src AdvTools           WISE-IoT/AdvTools.git
-advgitlab_src EI-Connect         EI-Connect/EI-Connect.git
-advgitlab_src EI-Platform        EI-Connect/EI-Platform.git
 
+g_EdgeSense
 g_EI-Connect
 
 advsvn_src CAgentIoT       svn/SUSIAccess/SA3.1/trunk/Agent/CAgentIoT

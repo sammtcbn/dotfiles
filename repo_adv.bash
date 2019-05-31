@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.5.15
+# Written by sammtcbn 2019.5.31
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -121,10 +121,22 @@ mkdir -p ${TOPDIR}
 load_advgitlab_account
 load_advsvn_account
 
+function g_EI-Connect() {
+  advgitlab_src EI-Platform        EI-Connect/EI-Platform.git
+  advgitlab_src EI-Lib             EI-Connect/EI-Lib.git
+  advgitlab_src EI-Connect         EI-Connect/EI-Connect.git
+  advgitlab_src EI-Predefine       EI-Connect/EI-Predefine.git
+  advgitlab_src EI-Connect-Python  EI-Connect/EI-Connect-Python.git
+  advgitlab_src EI-Connect-Node.js EI-Connect/EI-Connect-Node.js.git
+  advgitlab_src EI-Connect-CSharp  EI-Connect/EI-Connect-CSharp.git
+  advgitlab_src EI-Manifests       EI-Connect/EI-Manifests.git
+  advgitlab_src EI-MQTTConnector   EI-Connect/EI-MQTTConnector.git
+  advgitlab_src EI-WISECore        EI-Connect/EI-WISECore.git
+  advgitlab_src EI-Connect-JNI     EI-Connect/EI-Connect-JNI.git
+}
+
 git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
-git_src EI-Connect-Python  https://github.com/ADVANTECH-Corp/EI-Connect-Python.git
-git_src EI-Connect-Node.js https://github.com/ADVANTECH-Corp/EI-Connect-Node.js.git
 advgitlab_src device-snmp-nms-node.js EdgeSense/device-snmp-nms-node.js.git
 advgitlab_src device-opcua-client-node.js EdgeSense/device-opcua-client-node.js.git
 advgitlab_src device-poc_link-mgt-node.js EdgeSense/device-poc_link-mgt-node.js.git
@@ -148,8 +160,10 @@ advgitlab_src EdgeX-Plugin       EI-PaaS-Plugin/EdgeX-Plugin.git
 advgitlab_src LocalProvision     EI-PaaS-Plugin/LocalProvision.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 advgitlab_src AdvTools           WISE-IoT/AdvTools.git
+advgitlab_src EI-Connect         EI-Connect/EI-Connect.git
+advgitlab_src EI-Platform        EI-Connect/EI-Platform.git
 
-git_src EI-Connect         http://advgitlab.eastasia.cloudapp.azure.com/EI-Connect/EI-Connect.git
+g_EI-Connect
 
 advsvn_src CAgentIoT       svn/SUSIAccess/SA3.1/trunk/Agent/CAgentIoT
 

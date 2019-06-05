@@ -149,6 +149,7 @@ function g_EdgeSense() {
   advgitlab_src Service-SDK        EdgeSense/Service-SDK.git
   advgitlab_src TowerLight-Sensor  EdgeSense/TowerLight-Sensor.git
   advgitlab_src WAPI               EdgeSense/WAPI.git
+  advgitlab_src device-modbus-master        EdgeSense/device-modbus-master.git
   advgitlab_src device-opcua-client-node.js EdgeSense/device-opcua-client-node.js.git
   advgitlab_src device-poc_link-mgt-node.js EdgeSense/device-poc_link-mgt-node.js.git
   advgitlab_src device-snmp-nms-node.js     EdgeSense/device-snmp-nms-node.js.git

@@ -158,18 +158,26 @@ function g_EdgeSense() {
   advgitlab_src uartmgr             EdgeSense/uartmgr.git
 }
 
+function g_EI-PaaS-RMM() {
+  advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/RMM-EI-Agent.git
+  advgitlab_src RMM-EI-Agent_Installer EI-PaaS-RMM/RMM-EI-Agent_Installer.git
+}
+
+function g_EI-PaaS-Plugin() {
+  advgitlab_src EdgeX-Plugin       EI-PaaS-Plugin/EdgeX-Plugin.git
+  advgitlab_src LocalProvision     EI-PaaS-Plugin/LocalProvision.git
+}
+
 git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
 advgitlab_src advlog-node.js     EdgeSense-Open/advlog-node.js.git
-advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/RMM-EI-Agent.git
-advgitlab_src RMM-EI-Agent_Installer EI-PaaS-RMM/RMM-EI-Agent_Installer.git
-advgitlab_src EdgeX-Plugin       EI-PaaS-Plugin/EdgeX-Plugin.git
-advgitlab_src LocalProvision     EI-PaaS-Plugin/LocalProvision.git
 advgitlab_src WISE-3610_downlink WISE-IoT/WISE-3610_downlink.git
 advgitlab_src AdvTools           WISE-IoT/AdvTools.git
 
 g_EdgeSense
 g_EI-Connect
+g_EI-PaaS-RMM
+g_EI-PaaS-Plugin
 
 advsvn_src CAgentIoT       svn/SUSIAccess/SA3.1/trunk/Agent/CAgentIoT
 

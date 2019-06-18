@@ -1,11 +1,16 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.5.31
+# Written by sammtcbn 2019.6.19
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
 ADV_GITLAB_USE_HTTP=y
 ADV_GITLAB_USE_SSH=n
+
+EIOT_GITLAB_ID=
+EIOT_GITLAB_PW=
+EIOT_GITLAB_USE_HTTP=y
+EIOT_GITLAB_USE_SSH=n
 
 ADV_SVN_ID=
 ADV_SVN_PW=
@@ -37,6 +42,16 @@ function load_advgitlab_account() {
         ADV_GITLAB_PW=`cat ${GITLABAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
         #echo "ADV_GITLAB_ID = ${ADV_GITLAB_ID}"
         #echo "ADV_GITLAB_PW = ${ADV_GITLAB_PW}"
+    fi
+}
+
+function load_eiotgitlab_account() {
+    EIOTGITLABAUTHFILE=~/.eiotgitlab
+    if [ -f ${EIOTGITLABAUTHFILE} ]; then
+        EIOT_GITLAB_ID=`cat ${EIOTGITLABAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        EIOT_GITLAB_PW=`cat ${EIOTGITLABAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+        #echo "EIOT_GITLAB_ID = ${EIOT_GITLAB_ID}"
+        #echo "EIOT_GITLAB_PW = ${EIOT_GITLAB_PW}"
     fi
 }
 
@@ -72,6 +87,7 @@ function git_src() {
 }
 
 function advgitlab_src() {
+    domain="advgitlab.eastasia.cloudapp.azure.com"
     folder=$1
     url=$2
     echo "${url} ..."
@@ -79,14 +95,14 @@ function advgitlab_src() {
         cd $TOPDIR || exit 1
         if [ "${ADV_GITLAB_USE_HTTP}" == "y" ]; then
             if [ -n "$ADV_GITLAB_ID" ] && [ -n "$ADV_GITLAB_PW" ]; then
-                git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+                git clone http://${ADV_GITLAB_ID}:${ADV_GITLAB_PW}@${domain}/${url} || exit 1
             elif [ -n "$ADV_GITLAB_ID" ]; then
-                git clone http://${ADV_GITLAB_ID}@advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+                git clone http://${ADV_GITLAB_ID}@${domain}/${url} || exit 1
             else
-                git clone http://advgitlab.eastasia.cloudapp.azure.com/${url} || exit 1
+                git clone http://${domain}/${url} || exit 1
             fi
         elif [ "${ADV_GITLAB_USE_SSH}" == "y" ]; then
-            git clone git@advgitlab.eastasia.cloudapp.azure.com:${url} || exit 1
+            git clone git@${domain}:${url} || exit 1
         fi
     else
         cd ${TOPDIR}/${folder} || exit 1
@@ -94,19 +110,44 @@ function advgitlab_src() {
     fi
 }
 
+function eiotgitlab_src() {
+    domain="eiot-gitlab.eastasia.cloudapp.azure.com"
+    folder=$1
+    url=$2
+    echo "${url} ..."
+    export GIT_SSL_NO_VERIFY=1
+    if [ ! -d "${TOPDIR}/${folder}" ]; then
+        cd $TOPDIR || exit 1
+        if [ "${EIOT_GITLAB_USE_HTTP}" == "y" ]; then
+            if [ -n "$EIOT_GITLAB_ID" ] && [ -n "$EIOT_GITLAB_PW" ]; then
+                git clone https://${EIOT_GITLAB_ID}:${EIOT_GITLAB_PW}@${domain}/${url} || exit 1
+            elif [ -n "$EIOT_GITLAB_ID" ]; then
+                git clone https://${EIOT_GITLAB_ID}@${domain}/${url} || exit 1
+            else
+                git clone https://${domain}/${url} || exit 1
+            fi
+        elif [ "${EIOT_GITLAB_USE_SSH}" == "y" ]; then
+            git clone git@${domain}:${url} || exit 1
+        fi
+    else
+        cd ${TOPDIR}/${folder} || exit 1
+	git pull || exit 1
+    fi
+}
 
 function advsvn_src() {
+    domain="172.20.2.44"
     folder=$1
     url=$2
     echo "${url} ..."
     if [ ! -d "${TOPDIR}/${folder}" ]; then
         cd $TOPDIR || exit 1
         if [ -n "$ADV_SVN_ID" ] && [ -n "$ADV_SVN_PW" ]; then
-            svn co --username $ADV_SVN_ID https://172.20.2.44/${url} --password $ADV_SVN_PW || exit 1
+            svn co --username $ADV_SVN_ID https://${domain}/${url} --password $ADV_SVN_PW || exit 1
         elif [ -n "$ADV_SVN_ID" ]; then
-            svn co --username $ADV_SVN_ID https://172.20.2.44/${url} || exit 1
+            svn co --username $ADV_SVN_ID https://${domain}/${url} || exit 1
         else
-            svn co https://172.20.2.44/${url} || exit 1
+            svn co https://${domain}/${url} || exit 1
         fi
     else
        cd ${TOPDIR}/${folder} || exit 1
@@ -119,6 +160,7 @@ TOPDIR=${UBTROOT}/${PROJECTNAME}
 mkdir -p ${TOPDIR}
 
 load_advgitlab_account
+load_eiotgitlab_account
 load_advsvn_account
 
 function g_EI-Connect() {
@@ -168,6 +210,10 @@ function g_EI-PaaS-Plugin() {
   advgitlab_src LocalProvision     EI-PaaS-Plugin/LocalProvision.git
 }
 
+function g_EIOT_GITLAB() {
+  eiotgitlab_src wiseagent-ui-electron  ei-paas-rmm/wiseagent-ui-electron.git
+}
+
 git_src APIGateway         https://github.com/ADVANTECH-Corp/APIGateway.git
 git_src WiseSnail          https://github.com/ADVANTECH-Corp/WiseSnail.git
 advgitlab_src advlog-node.js     EdgeSense-Open/advlog-node.js.git
@@ -178,6 +224,7 @@ g_EdgeSense
 g_EI-Connect
 g_EI-PaaS-RMM
 g_EI-PaaS-Plugin
+g_EIOT_GITLAB
 
 advsvn_src CAgentIoT       svn/SUSIAccess/SA3.1/trunk/Agent/CAgentIoT
 

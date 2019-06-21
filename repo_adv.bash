@@ -184,7 +184,6 @@ function g_EI-Connect() {
 
 function g_EdgeSense() {
   advgitlab_src AdvPlatform                 EdgeSense/AdvPlatform.git
-  advgitlab_src AgentLite-Node.js           EdgeSense/AgentLite-Node.js.git
   advgitlab_src Alarm_msg_service           EdgeSense/Alarm_msg_service.git
   advgitlab_src device-modbus-master        EdgeSense/device-modbus-master.git
   advgitlab_src device-opcua-client-node.js EdgeSense/device-opcua-client-node.js.git
@@ -206,7 +205,8 @@ function g_EdgeSense() {
 }
 
 function g_EdgeSense-Open() {
-  advgitlab_src advlog-node.js  EdgeSense-Open/advlog-node.js.git
+  advgitlab_src advlog-node.js    EdgeSense-Open/advlog-node.js.git
+  advgitlab_src agentlite-node.js EdgeSense-Open/agentlite-node.js.git
 }
 
 function g_EI-PaaS-RMM() {

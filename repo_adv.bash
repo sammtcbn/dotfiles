@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.6.21
+# Written by sammtcbn 2019.7.16
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -211,12 +211,17 @@ function g_EdgeSense-Open() {
 
 function g_EI-PaaS-RMM() {
   advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/RMM-EI-Agent.git
+  advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/SouthboundAgent.git
   advgitlab_src RMM-EI-Agent_Installer EI-PaaS-RMM/RMM-EI-Agent_Installer.git
 }
 
 function g_EI-PaaS-Plugin() {
   advgitlab_src EdgeX-Plugin       EI-PaaS-Plugin/EdgeX-Plugin.git
   advgitlab_src LocalProvision     EI-PaaS-Plugin/LocalProvision.git
+}
+
+function g_SRP-Connect() {
+  advgitlab_src SRP-Plugin   SRP-Connect/SRP-Plugin.git
 }
 
 function g_WISE-IoT()
@@ -239,6 +244,7 @@ g_EdgeSense-Open
 g_EI-Connect
 g_EI-PaaS-RMM
 g_EI-PaaS-Plugin
+g_SRP-Connect
 g_WISE-IoT
 g_EIOT_GITLAB
 g_advsvn

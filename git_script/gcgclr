@@ -1,0 +1,8 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2019.7.17
+# To clear git global config
+git config --global --unset user.name || exit 1
+git config --global --unset user.email || exit 1
+git config --global user.name || exit 1
+git config --global user.email || exit 1

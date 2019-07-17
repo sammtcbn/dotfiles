@@ -1,7 +1,9 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.1.9
+# Written by sammtcbn 2019.7.17
 
 git config --global user.name "sammtcbn" || exit 1
 git config --global user.email "sammtcbn@gmail.com" || exit 1
-cat ~/.gitconfig || exit 1
+#cat ~/.gitconfig || exit 1
+git config --global user.name || exit 1
+git config --global user.email || exit 1

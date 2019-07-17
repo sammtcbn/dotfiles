@@ -4,6 +4,5 @@
 
 git config user.name "sammtcbn" || exit 1
 git config user.email "sammtcbn@gmail.com" || exit 1
-#cat ~/.gitconfig || exit 1
 git config --local user.name || exit 1
 git config --local user.email || exit 1

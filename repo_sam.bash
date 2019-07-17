@@ -41,6 +41,10 @@ function git_src() {
         cd ${TOPDIR}/${folder} || exit 1
         git pull || exit 1
     fi
+
+    cd ${TOPDIR}/${folder} || exit 1
+    git config user.name "sammtcbn" || exit 1
+    git config user.email "sammtcbn@gmail.com" || exit 1
 }
 
 init_ubtroot_path

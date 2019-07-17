@@ -217,8 +217,9 @@ function g_EI-PaaS-RMM() {
 }
 
 function g_EI-PaaS-Plugin() {
-  advgitlab_src EdgeX-Plugin       EI-PaaS-Plugin/EdgeX-Plugin.git
-  advgitlab_src LocalProvision     EI-PaaS-Plugin/LocalProvision.git
+  advgitlab_src EdgeX-Plugin          EI-PaaS-Plugin/EdgeX-Plugin.git
+  advgitlab_src LocalProvision        EI-PaaS-Plugin/LocalProvision.git
+  advgitlab_src RuleEngine_Plugin.git EI-PaaS-Plugin/RuleEngine_Plugin.git
 }
 
 function g_SRP-Connect() {

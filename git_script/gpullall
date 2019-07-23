@@ -1,7 +1,7 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
 # Written by sammtcbn 2019.7.23
-TOPDIR=$(cd $(dirname $0) && pwd)
+TOPDIR=$(pwd)
 
 if [ -f .git/config ]; then
     git pull

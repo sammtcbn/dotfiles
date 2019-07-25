@@ -6,6 +6,7 @@ function showmenu() {
     echo "1) git clone spe"
     echo "2) git clone dotfiles"
     echo "3) git clone advutil"
+    echo "c) local config - clear"
     echo "q) quit"
 }
 
@@ -21,6 +22,11 @@ case "$ins" in
         ;;
     3)
         git clone https://github.com/sammtcbn/advutil.git
+        ;;
+    c)  git config --unset user.name
+        git config --unset user.email
+        git config --local user.name
+        git config --local user.email
         ;;
     *)
         exit 0

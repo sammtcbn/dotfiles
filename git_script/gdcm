@@ -13,8 +13,6 @@ commit=${1}
 
 if [ -z "${1}" ]; then
     usage
-else
-    commit=${1}
 fi
 
 git --no-pager diff ${commit}^ ${commit} || exit 1

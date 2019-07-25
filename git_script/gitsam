@@ -1,0 +1,27 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2019.7.25
+
+function showmenu() {
+    echo "1) git clone spe"
+    echo "2) git clone dotfiles"
+    echo "3) git clone advutil"
+    echo "q) quit"
+}
+
+showmenu
+read -p "Choose: " ins
+
+case "$ins" in
+    1)
+        git clone https://github.com/sammtcbn/spe.git
+        ;;
+    2)
+        git clone https://github.com/sammtcbn/dotfiles.git
+        ;;
+    3)
+        git clone https://github.com/sammtcbn/advutil.git
+        ;;
+    *)
+        exit 0
+esac

@@ -1,0 +1,5 @@
+#!/bin/bash
+# gpull - git pull current repository
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2019.7.25
+git pull

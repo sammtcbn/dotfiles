@@ -5,11 +5,7 @@
 parameter=${1}
 
 if [ -z "${parameter}" ]; then
-    echo "git diff --name-status"
     git diff --name-status || exit 1
 else
-    echo "git diff --name-status ${parameter}"
     git diff --name-status ${parameter} || exit 1
 fi
-
-echo "done"

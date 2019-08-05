@@ -1,11 +1,11 @@
 #!/bin/bash
 # gadd - git add file
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.7.26
+# Written by sammtcbn 2019.8.5
 ME=$(basename $0)
 
 function usage() {
-    echo "Usage: ${ME} [file]"
+    echo "Usage: ${ME} [file1] [file2] ..."
     exit 1
 }
 
@@ -15,4 +15,6 @@ if [ -z "${file}" ]; then
     usage
 fi
 
-git add ${file} || exit 1
+for f in $@; do
+    git add $f
+done

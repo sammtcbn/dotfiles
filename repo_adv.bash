@@ -166,6 +166,7 @@ load_advsvn_account
 function g_github() {
   git_src APIGateway   https://github.com/ADVANTECH-Corp/APIGateway.git
   git_src WiseSnail    https://github.com/ADVANTECH-Corp/WiseSnail.git
+  git_src agentlite    https://github.com/ADVANTECH-Corp/agentlite.git
 }
 
 function g_EI-Connect() {

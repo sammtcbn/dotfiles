@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.7.25
+# Written by sammtcbn 2019.8.6
 
 function showmenu() {
     echo "1) git clone spe"
@@ -8,6 +8,8 @@ function showmenu() {
     echo "3) git clone advutil"
     echo "c) local config - clear"
     echo "d) global config - clear"
+    echo "e) global config - for adv"
+    echo "f) global config - for personal"
     echo "q) quit"
 }
 
@@ -33,6 +35,18 @@ case "$ins" in
     d)
         git config --global --unset user.name
         git config --global --unset user.email
+        git config --global user.name
+        git config --global user.email
+        ;;
+    e)
+        git config --global user.name "Sam35.Lin"
+        git config --global user.email "sam35.lin@advantech.com.tw"
+        git config --global user.name
+        git config --global user.email
+        ;;
+    f)
+        git config --global user.name "sammtcbn"
+        git config --global user.email "sammtcbn@gmail.com"
         git config --global user.name
         git config --global user.email
         ;;

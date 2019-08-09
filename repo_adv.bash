@@ -36,7 +36,7 @@ function init_ubtroot_path() {
 }
 
 function load_advgitlab_account() {
-    GITLABAUTHFILE=~/.advgitlab
+    GITLABAUTHFILE=~/.config/.advgitlab
     if [ -f ${GITLABAUTHFILE} ]; then
         ADV_GITLAB_ID=`cat ${GITLABAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
         ADV_GITLAB_PW=`cat ${GITLABAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
@@ -46,7 +46,7 @@ function load_advgitlab_account() {
 }
 
 function load_eiotgitlab_account() {
-    EIOTGITLABAUTHFILE=~/.eiotgitlab
+    EIOTGITLABAUTHFILE=~/.config/.eiotgitlab
     if [ -f ${EIOTGITLABAUTHFILE} ]; then
         EIOT_GITLAB_ID=`cat ${EIOTGITLABAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
         EIOT_GITLAB_PW=`cat ${EIOTGITLABAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
@@ -56,7 +56,7 @@ function load_eiotgitlab_account() {
 }
 
 function load_advsvn_account() {
-    SVNAUTHFILE=~/.advsvn
+    SVNAUTHFILE=~/.config/.advsvn
     if [ -f ${SVNAUTHFILE} ]; then
         ADV_SVN_ID=`cat ${SVNAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
         ADV_SVN_PW=`cat ${SVNAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`

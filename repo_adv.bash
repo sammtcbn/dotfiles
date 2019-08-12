@@ -26,7 +26,7 @@ while getopts "c" opt; do
 done
 
 function init_ubtroot_path() {
-    UBTROOT_SETTING=~/.ubtroot
+    UBTROOT_SETTING=~/.config/.ubtroot
     if [ -f ${UBTROOT_SETTING} ]; then
         UBTROOT=`cat ${UBTROOT_SETTING}`
     else

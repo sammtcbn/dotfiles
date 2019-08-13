@@ -1,0 +1,13 @@
+#!/bin/bash
+# use Explorer to open current path
+# ref to https://stackoverflow.com/questions/38859145/detect-ubuntu-on-windows-vs-native-ubuntu-from-bash-script
+
+#if grep -q Microsoft /proc/version; then
+#    explorer.exe .
+#fi
+
+if [[ "$(< /proc/sys/kernel/osrelease)" == *Microsoft ]]; then
+    explorer.exe .
+else
+    echo "native Linux"
+fi

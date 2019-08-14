@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.7.17
+# Written by sammtcbn 2019.8.14
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -184,6 +184,7 @@ function g_EI-Connect() {
 }
 
 function g_EdgeSense() {
+  advgitlab_src advins_template             EdgeSense/advins_template.git
   advgitlab_src AdvPlatform                 EdgeSense/AdvPlatform.git
   advgitlab_src Alarm_msg_service           EdgeSense/Alarm_msg_service.git
   advgitlab_src device-odbc                 EdgeSense/device-odbc.git

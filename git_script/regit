@@ -1,23 +1,27 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
 # Written by sammtcbn 2018.5.14
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage: ${ME} [file1] [file2] ..."
+    exit 1
+}
 
 if [ -z "${1}" ]; then
-    echo "parameter is empty!"
-    exit 1
+    usage
 fi
 
-fn=${1}
-
-if [[ -d ${fn} ]]; then
-    echo "rm -rf --preserve-root ${fn}"
-    rm -rf --preserve-root ${fn} || exit 1
-elif [[ -f ${fn} ]]; then
-    echo "rm -f --preserve-root ${fn}"
-    rm -f --preserve-root ${fn} || exit 1
-fi
-
-echo "git checkout ${fn}"
-git checkout ${fn} || exit 1
+for fn in $@; do
+    if [[ -d ${fn} ]]; then
+        echo "rm -rf --preserve-root ${fn}"
+        rm -rf --preserve-root ${fn} || exit 1
+    elif [[ -f ${fn} ]]; then
+        echo "rm -f --preserve-root ${fn}"
+        rm -f --preserve-root ${fn} || exit 1
+    fi
+    echo "git checkout ${fn}"
+    git checkout ${fn} || exit 1
+done
 
 echo "done"

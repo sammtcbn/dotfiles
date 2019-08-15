@@ -9,4 +9,4 @@ for %%x in (%*) do (
 exit /b
 
 :usage
-echo "Usage: ${ME} [file1] [file2] ..."
+echo "Usage: gadd [file1] [file2] ..."

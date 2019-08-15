@@ -60,6 +60,7 @@ git_src sccu          https://sammtcbn@github.com/sammtcbn/sccu.git
 git_src advutil       https://sammtcbn@github.com/sammtcbn/advutil.git
 git_src ingrautil     https://sammtcbn@github.com/sammtcbn/ingrautil.git
 git_src mqtt-show-msg https://sammtcbn@github.com/sammtcbn/mqtt-show-msg.git
+git_src advdotfiles   https://sammtcbn@github.com/sammtcbn/advdotfiles.git
 
 if [ "${COMPRESS}" == 1 ]; then
     do_compress

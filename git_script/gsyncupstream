@@ -1,0 +1,18 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2019.8.16
+
+git checkout master || exit 1
+git pull upstream master || exit 1
+
+ins=n
+echo "local master sync ... done"
+read -p "git push origin master ? [y/n]" ins
+
+if [ "${ins}" != "y" ] && [ "${ins}" != "Y" ]; then
+    exit 0
+fi
+
+git push origin master || exit 1
+
+echo "done"

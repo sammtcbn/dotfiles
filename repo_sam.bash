@@ -51,15 +51,15 @@ init_ubtroot_path
 TOPDIR=${UBTROOT}/${PROJECTNAME}
 mkdir -p ${TOPDIR}
 
-git_src dotfiles      https://github.com/sammtcbn/dotfiles.git
-git_src spe           https://github.com/sammtcbn/spe.git
-git_src fpjson        https://github.com/sammtcbn/fpjson.git
-git_src libreadini    https://github.com/sammtcbn/libreadini.git
-git_src logshow       https://github.com/sammtcbn/logshow.git
-git_src sccu          https://github.com/sammtcbn/sccu.git
-git_src advutil       https://github.com/sammtcbn/advutil.git
-git_src ingrautil     https://github.com/sammtcbn/ingrautil.git
-git_src mqtt-show-msg https://github.com/sammtcbn/mqtt-show-msg.git
+git_src dotfiles      https://sammtcbn@github.com/sammtcbn/dotfiles.git
+git_src spe           https://sammtcbn@github.com/sammtcbn/spe.git
+git_src fpjson        https://sammtcbn@github.com/sammtcbn/fpjson.git
+git_src libreadini    https://sammtcbn@github.com/sammtcbn/libreadini.git
+git_src logshow       https://sammtcbn@github.com/sammtcbn/logshow.git
+git_src sccu          https://sammtcbn@github.com/sammtcbn/sccu.git
+git_src advutil       https://sammtcbn@github.com/sammtcbn/advutil.git
+git_src ingrautil     https://sammtcbn@github.com/sammtcbn/ingrautil.git
+git_src mqtt-show-msg https://sammtcbn@github.com/sammtcbn/mqtt-show-msg.git
 
 if [ "${COMPRESS}" == 1 ]; then
     do_compress

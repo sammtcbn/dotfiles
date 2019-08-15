@@ -18,13 +18,22 @@ read -p "Choose: " ins
 
 case "$ins" in
     1)
-        git clone https://github.com/sammtcbn/spe.git
+        git clone https://sammtcbn@github.com/sammtcbn/spe.git
+        cd spe
+        git config user.name "sammtcbn"
+        git config user.email "sammtcbn@gmail.com"
         ;;
     2)
-        git clone https://github.com/sammtcbn/dotfiles.git
+        git clone https://sammtcbn@github.com/sammtcbn/dotfiles.git
+        cd dotfiles
+        git config user.name "sammtcbn"
+        git config user.email "sammtcbn@gmail.com"
         ;;
     3)
-        git clone https://github.com/sammtcbn/advutil.git
+        git clone https://sammtcbn@github.com/sammtcbn/advutil.git
+        cd advutil
+        git config user.name "sammtcbn"
+        git config user.email "sammtcbn@gmail.com"
         ;;
     c)
         git config --unset user.name

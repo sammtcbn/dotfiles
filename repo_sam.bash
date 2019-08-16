@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.5.30
+# Written by sammtcbn 2019.8.16
 
 PROJECTNAME=repo_sam
 
@@ -59,6 +59,7 @@ git_src logshow       https://sammtcbn@github.com/sammtcbn/logshow.git
 git_src sccu          https://sammtcbn@github.com/sammtcbn/sccu.git
 git_src advutil       https://sammtcbn@github.com/sammtcbn/advutil.git
 git_src ingrautil     https://sammtcbn@github.com/sammtcbn/ingrautil.git
+git_src ediutil       https://sammtcbn@github.com/sammtcbn/ediutil.git
 git_src mqtt-show-msg https://sammtcbn@github.com/sammtcbn/mqtt-show-msg.git
 git_src ssn           https://sammtcbn@github.com/sammtcbn/ssn.git
 git_src advdotfiles   https://sammtcbn@github.com/sammtcbn/advdotfiles.git

@@ -5,7 +5,8 @@
 function showmenu() {
     echo "1) git clone spe"
     echo "2) git clone dotfiles"
-    echo "3) git clone advutil"
+    echo "3) git clone git-utils"
+    echo "4) git clone advutil"
     echo "c) local config - clear"
     echo "d) global config - clear"
     echo "e) global config - for adv"
@@ -30,6 +31,12 @@ case "$ins" in
         git config user.email "sammtcbn@gmail.com"
         ;;
     3)
+        git clone https://sammtcbn@github.com/sammtcbn/git-utils.git
+        cd git-utils
+        git config user.name "sammtcbn"
+        git config user.email "sammtcbn@gmail.com"
+        ;;
+    4)
         git clone https://sammtcbn@github.com/sammtcbn/advutil.git
         cd advutil
         git config user.name "sammtcbn"

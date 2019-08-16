@@ -1,5 +1,0 @@
-#!/bin/bash
-# gbrlist - List all branches
-# https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.7.25
-git branch -a

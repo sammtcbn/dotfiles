@@ -53,6 +53,7 @@ mkdir -p ${TOPDIR}
 
 git_src dotfiles      https://sammtcbn@github.com/sammtcbn/dotfiles.git
 git_src spe           https://sammtcbn@github.com/sammtcbn/spe.git
+git_src git-utils     https://sammtcbn@github.com/sammtcbn/git-utils.git
 git_src fpjson        https://sammtcbn@github.com/sammtcbn/fpjson.git
 git_src libreadini    https://sammtcbn@github.com/sammtcbn/libreadini.git
 git_src logshow       https://sammtcbn@github.com/sammtcbn/logshow.git

@@ -1,4 +1,10 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
 # Written by sammtcbn 2017.12.15
-find . -name "*.h" -or -name "*.c" | xargs grep "${1}"
+
+# below will lost *.h
+#find . -name "*.h" -or -name "*.c" -type f -not -path '*/\.git/*' -print0 | xargs -0 grep "${1}"
+
+# method-2
+# refer to https://alvinalexander.com/linux-unix/linux-find-multiple-filenames-patterns-command-example
+find . -type f \( -name "*.c" -o -name "*.h" \) -not -path '*/\.git/*' -print0 | xargs -0 grep "${1}"

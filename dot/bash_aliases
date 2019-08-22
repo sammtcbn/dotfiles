@@ -1,2 +1,5 @@
 alias cd..='cd ..'
 alias cls='clear'
+
+# git
+alias groot='cd $(git rev-parse --show-toplevel)'

@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.8.14
+# Written by sammtcbn 2019.8.26
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -205,6 +205,7 @@ function g_EdgeSense() {
   advgitlab_src TowerLight-Sensor           EdgeSense/TowerLight-Sensor.git
   advgitlab_src uartmgr                     EdgeSense/uartmgr.git
   advgitlab_src WAPI                        EdgeSense/WAPI.git
+  advgitlab_src service_mgt_win             EdgeSense/service_mgt_win.git
 }
 
 function g_EdgeSense-Open() {

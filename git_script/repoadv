@@ -1,6 +1,7 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.8.26
+# Written by sammtcbn 2019.8.29
+TOPDIR=$(pwd)
 
 ADV_GITLAB_ID=
 ADV_GITLAB_PW=
@@ -14,26 +15,6 @@ EIOT_GITLAB_USE_SSH=n
 
 ADV_SVN_ID=
 ADV_SVN_PW=
-
-PROJECTNAME=repo_adv
-
-while getopts "c" opt; do
-    case $opt in
-    c)
-       COMPRESS=1
-       ;;
-    esac
-done
-
-function init_ubtroot_path() {
-    UBTROOT_SETTING=~/.config/.ubtroot
-    if [ -f ${UBTROOT_SETTING} ]; then
-        UBTROOT=`cat ${UBTROOT_SETTING}`
-    else
-        UBTROOT=~
-    fi
-    #echo "UBTROOT = ${UBTROOT}"
-}
 
 function load_advgitlab_account() {
     GITLABAUTHFILE=~/.config/.advgitlab
@@ -63,14 +44,6 @@ function load_advsvn_account() {
         #echo "ADV_SVN_ID = ${ADV_SVN_ID}"
         #echo "ADV_SVN_PW = ${ADV_SVN_PW}"
     fi
-}
-
-function do_compress() {
-    destfile=${PROJECTNAME}-$(date '+%Y%m%d').tar.gz
-    cd $TOPDIR/.. || exit 1
-    rm -f $destfile || exit 1
-    tar zcfv $destfile ${PROJECTNAME}
-    ls -la $destfile
 }
 
 function git_src() {
@@ -155,10 +128,6 @@ function advsvn_src() {
     fi
 }
 
-init_ubtroot_path
-TOPDIR=${UBTROOT}/${PROJECTNAME}
-mkdir -p ${TOPDIR}
-
 load_advgitlab_account
 load_eiotgitlab_account
 load_advsvn_account
@@ -241,6 +210,7 @@ function g_EIOT_GITLAB() {
 
 function g_advsvn() {
   advsvn_src CAgentIoT   svn/SUSIAccess/SA3.1/trunk/Agent/CAgentIoT
+  advsvn_src CAgentIoT   svn/SUSIAccess/SA3.1/trunk/Agent/Installer
 }
 
 g_github
@@ -253,7 +223,3 @@ g_SRP-Connect
 g_WISE-IoT
 g_EIOT_GITLAB
 g_advsvn
-
-if [ "${COMPRESS}" == 1 ]; then
-    do_compress
-fi

@@ -1,34 +1,7 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.9.13
-
-PROJECTNAME=repo_misc
-
-while getopts "c" opt; do
-    case $opt in
-    c)
-       COMPRESS=1
-       ;;
-    esac
-done
-
-function init_ubtroot_path() {
-    UBTROOT_SETTING=~/.config/.ubtroot
-    if [ -f ${UBTROOT_SETTING} ]; then
-        UBTROOT=`cat ${UBTROOT_SETTING}`
-    else
-        UBTROOT=~
-    fi
-    #echo "UBTROOT = ${UBTROOT}"
-}
-
-function do_compress() {
-    destfile=${PROJECTNAME}-$(date '+%Y%m%d').tar.gz
-    cd $TOPDIR/.. || exit 1
-    rm -f $destfile || exit 1
-    tar zcfv $destfile ${PROJECTNAME}
-    ls -la $destfile
-}
+# Written by sammtcbn 2019.8.29
+TOPDIR=$(pwd)
 
 function git_src() {
     folder=$1
@@ -43,10 +16,6 @@ function git_src() {
     fi
 }
 
-init_ubtroot_path
-TOPDIR=${UBTROOT}/${PROJECTNAME}
-mkdir -p ${TOPDIR}
-
 git_src samba         https://github.com/samba-team/samba.git
 git_src libwebsockets https://github.com/warmcat/libwebsockets.git 
 git_src opencv        https://github.com/opencv/opencv.git
@@ -60,8 +29,3 @@ git_src zlib          https://github.com/madler/zlib.git
 git_src paho.mqtt.c   https://github.com/eclipse/paho.mqtt.c.git
 git_src mosquitto     https://github.com/eclipse/mosquitto.git
 git_src wget          https://git.savannah.gnu.org/git/wget.git
-
-if [ "${COMPRESS}" == 1 ]; then
-    do_compress
-fi
-

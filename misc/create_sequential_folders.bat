@@ -1,4 +1,8 @@
 @echo off
+
+@rem change to UTF8 (65001)
+chcp 65001
+
 setlocal enableDelayedExpansion
 set prefix=
 set startp=1

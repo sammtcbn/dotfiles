@@ -6,8 +6,6 @@ for %%a in (*.mp3) do (
   ren "%%a" "!name:~,2!.mp3"
 )
 
-pause
-
 @rem if your files looks like:
 @rem   01 aaa.mp3
 @rem   02 bbb.mp3

@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.8.30
+# Written by sammtcbn 2019.10.4
 TOPDIR=$(pwd)
 
 ADV_GITLAB_ID=
@@ -176,6 +176,8 @@ function g_EdgeSense() {
   advgitlab_src WAPI                        EdgeSense/WAPI.git
   advgitlab_src service_mgt                 EdgeSense/service_mgt.git
   advgitlab_src service_mgt_win             EdgeSense/service_mgt_win.git
+  advgitlab_src industrial-protocol-sdk     EdgeSense/industrial-protocol-sdk.git
+  advgitlab_src AgentLite-Node.js           EdgeSense/AgentLite-Node.js.git
 }
 
 function g_EdgeSense-Open() {

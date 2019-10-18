@@ -161,6 +161,7 @@ function g_EdgeSense() {
   advgitlab_src device-opcua-client-node.js EdgeSense/device-opcua-client-node.js.git
   advgitlab_src device-poc_link-mgt-node.js EdgeSense/device-poc_link-mgt-node.js.git
   advgitlab_src device-snmp-nms-node.js     EdgeSense/device-snmp-nms-node.js.git
+  advgitlab_src device-industry-node.js     EdgeSense/device-industry-node.js.git
   advgitlab_src EdgeX-WiseAgent-Device      EdgeSense/EdgeX-WiseAgent-Device.git
   advgitlab_src ePack                       EdgeSense/ePack.git
   advgitlab_src Mirai                       EdgeSense/Mirai.git
@@ -183,6 +184,8 @@ function g_EdgeSense() {
 function g_EdgeSense-Open() {
   advgitlab_src advlog-node.js    EdgeSense-Open/advlog-node.js.git
   advgitlab_src agentlite-node.js EdgeSense-Open/agentlite-node.js.git
+  advgitlab_src device-template-node.js EdgeSense-Open/device-template-node.js.git
+  advgitlab_src device-service-sdk-node.js EdgeSense-Open/device-service-sdk-node.js.git
 }
 
 function g_EI-PaaS-RMM() {

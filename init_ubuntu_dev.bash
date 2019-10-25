@@ -7,10 +7,6 @@ apt -y install build-essential
 # build-essential consists of lib6-dev, gcc, g++, make, dpkg-dev
 apt -y install automake autoconf
 apt -y install libtool
+apt -y install m4
 apt -y install cmake
 apt -y install subversion
-
-apt -y install mosquitto-clients
-
-apt -y install nodejs
-apt -y install npm

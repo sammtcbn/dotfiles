@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.12.22
+# Written by sammtcbn 2019.10.26
 apt update
 apt -y install git
 apt -y install build-essential
@@ -9,7 +9,6 @@ apt -y install automake autoconf
 apt -y install libtool
 apt -y install cmake
 apt -y install subversion
-apt -y install curl
 
 apt -y install mosquitto-clients
 

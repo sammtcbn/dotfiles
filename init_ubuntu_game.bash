@@ -55,3 +55,7 @@ apt -y install gomoku.app
 # install Chromium B.S.U.
 # official website - http://chromium-bsu.sourceforge.net/
 apt -y install chromium-bsu
+
+# install bastet
+# official web site - https://github.com/fph/bastet/
+apt -y install bastet

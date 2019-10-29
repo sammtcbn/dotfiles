@@ -1,5 +1,7 @@
 alias cd..='cd ..'
 alias cls='clear'
+alias wo='cd ~/work'
+alias tmp='cd ~/tmp'
 
 # git
 alias groot='cd $(git rev-parse --show-toplevel)'

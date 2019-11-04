@@ -1,11 +1,20 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.10.29
+# Written by sammtcbn 2019.11.5
 TOPDIR=$(pwd)
 
-function git_src() {
+GH_ID=sammtcbn
+GW_EMAIL=sammtcbn@gmail.com
+
+REPOALL=(
+dotfiles                                                                                                                spe                                                                                                                     git-utils                                                                                                               fpjson                                                                                                                  libreadini                                                                                                              logshow                                                                                                                 sccu                                                                                                                    advutil                                                                                                                 ingrautil                                                                                                               ediutil                                                                                                                 mqtt-show-msg                                                                                                           lineto                                                                                                                  ssn                                                                                                                     advdotfiles
+)
+
+function gh() {
+    domain="github.com"
     folder=$1
-    url=$2
+    project=$1
+    url=https://${GH_ID}@${domain}/${GH_ID}/${project}.git
     echo "${url} ..."
     if [ ! -d "${TOPDIR}/${folder}" ]; then
         cd $TOPDIR || exit 1
@@ -16,21 +25,11 @@ function git_src() {
     fi
 
     cd ${TOPDIR}/${folder} || exit 1
-    git config user.name "sammtcbn" || exit 1
-    git config user.email "sammtcbn@gmail.com" || exit 1
+    git config user.name "${GH_ID}" || exit 1
+    git config user.email "${GH_EMAIL}" || exit 1
 }
 
-git_src dotfiles      https://sammtcbn@github.com/sammtcbn/dotfiles.git
-git_src spe           https://sammtcbn@github.com/sammtcbn/spe.git
-git_src git-utils     https://sammtcbn@github.com/sammtcbn/git-utils.git
-git_src fpjson        https://sammtcbn@github.com/sammtcbn/fpjson.git
-git_src libreadini    https://sammtcbn@github.com/sammtcbn/libreadini.git
-git_src logshow       https://sammtcbn@github.com/sammtcbn/logshow.git
-git_src sccu          https://sammtcbn@github.com/sammtcbn/sccu.git
-git_src advutil       https://sammtcbn@github.com/sammtcbn/advutil.git
-git_src ingrautil     https://sammtcbn@github.com/sammtcbn/ingrautil.git
-git_src ediutil       https://sammtcbn@github.com/sammtcbn/ediutil.git
-git_src mqtt-show-msg https://sammtcbn@github.com/sammtcbn/mqtt-show-msg.git
-git_src lineto        https://sammtcbn@github.com/sammtcbn/lineto.git
-git_src ssn           https://sammtcbn@github.com/sammtcbn/ssn.git
-git_src advdotfiles   https://sammtcbn@github.com/sammtcbn/advdotfiles.git
+for i in "${REPOALL[@]}";
+do
+    gh "$i";
+done

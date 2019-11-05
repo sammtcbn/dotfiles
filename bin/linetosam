@@ -1,0 +1,28 @@
+#!/bin/bash
+TOKEN=
+MSG=
+
+function load_line_token()
+{
+    CFG=~/.config/.samlinetoken
+    if [ -f ${CFG} ]; then
+        TOKEN=`awk '{if(NR==1) print $0}' ${CFG}`
+    fi
+}
+
+load_line_token
+
+MSG=${@}
+
+if [ -z "${TOKEN}" ]; then
+    echo token is empty
+    exit 1
+fi
+
+if [ -z "${MSG}" ]; then
+    echo msg is empty
+    exit 1
+fi
+
+lineto -t ${TOKEN} -m "${MSG}"
+echo

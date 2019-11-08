@@ -7,6 +7,7 @@ if [ "$EUID" -ne 0 ]; then
     exit
 fi
 
+apt-add-repository -y ppa:mosquitto-dev/mosquitto-ppa
 apt update
 apt -y install mosquitto
 apt -y install mosquitto-clients

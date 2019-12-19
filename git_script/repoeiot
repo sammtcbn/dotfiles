@@ -9,7 +9,7 @@ EIOT_GITLAB_USE_HTTP=y
 EIOT_GITLAB_USE_SSH=n
 
 function load_eiotgitlab_account() {
-    EIOTGITLABAUTHFILE=~/.config/.eiotgitlab
+    EIOTGITLABAUTHFILE=~/.config/.adveiotgitlab
     if [ -f ${EIOTGITLABAUTHFILE} ]; then
         EIOT_GITLAB_ID=`cat ${EIOTGITLABAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
         EIOT_GITLAB_PW=`cat ${EIOTGITLABAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`

@@ -1,0 +1,53 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2019.12.20
+TOPDIR=$(pwd)
+
+EIOT_GITLAB_ID=sam
+EIOT_GITLAB_PW=
+EIOT_GITLAB_USE_HTTP=y
+EIOT_GITLAB_USE_SSH=n
+
+function load_eiotgitlab_account() {
+    EIOTGITLABAUTHFILE=~/.config/.eiotgitlab
+    if [ -f ${EIOTGITLABAUTHFILE} ]; then
+        EIOT_GITLAB_ID=`cat ${EIOTGITLABAUTHFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        EIOT_GITLAB_PW=`cat ${EIOTGITLABAUTHFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+        #echo "EIOT_GITLAB_ID = ${EIOT_GITLAB_ID}"
+        #echo "EIOT_GITLAB_PW = ${EIOT_GITLAB_PW}"
+    fi
+}
+
+
+function eiotgitlab_src() {
+    domain="eiot-gitlab.eastasia.cloudapp.azure.com"
+    folder=$1
+    url=$2
+    echo "${url} ..."
+    export GIT_SSL_NO_VERIFY=1
+    if [ ! -d "${TOPDIR}/${folder}" ]; then
+        cd $TOPDIR || exit 1
+        if [ "${EIOT_GITLAB_USE_HTTP}" == "y" ]; then
+            if [ -n "$EIOT_GITLAB_ID" ] && [ -n "$EIOT_GITLAB_PW" ]; then
+                git clone https://${EIOT_GITLAB_ID}:${EIOT_GITLAB_PW}@${domain}/${url} || exit 1
+            elif [ -n "$EIOT_GITLAB_ID" ]; then
+                git clone https://${EIOT_GITLAB_ID}@${domain}/${url} || exit 1
+            else
+                git clone https://${domain}/${url} || exit 1
+            fi
+        elif [ "${EIOT_GITLAB_USE_SSH}" == "y" ]; then
+            git clone git@${domain}:${url} || exit 1
+        fi
+    else
+        cd ${TOPDIR}/${folder} || exit 1
+	git pull || exit 1
+    fi
+}
+
+load_eiotgitlab_account
+
+function g_EIOT_GITLAB() {
+  eiotgitlab_src wiseagent-ui-electron  ei-paas-rmm/wiseagent-ui-electron.git
+}
+
+g_EIOT_GITLAB

@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.10.28
+# Written by sammtcbn 2019.12.24
 TOPDIR=$(pwd)
 
 ADV_GITLAB_ID=
@@ -151,6 +151,7 @@ function g_EdgeSense-Open() {
 
 function g_EI-PaaS-RMM() {
   advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/RMM-EI-Agent.git
+  advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/RMM-EI-Agent_New_UI.git
   advgitlab_src RMM-EI-Agent           EI-PaaS-RMM/SouthboundAgent.git
   advgitlab_src RMM-EI-Agent_Installer EI-PaaS-RMM/RMM-EI-Agent_Installer.git
 }

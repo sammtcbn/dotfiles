@@ -47,7 +47,7 @@ function eiotgitlab_src() {
 load_eiotgitlab_account
 
 function g_EIOT_GITLAB() {
-  eiotgitlab_src wiseagent-ui-electron  ei-paas-rmm/wiseagent-ui-electron.git
+#  eiotgitlab_src wiseagent-ui-electron  ei-paas-rmm/wiseagent-ui-electron.git
 }
 
 g_EIOT_GITLAB

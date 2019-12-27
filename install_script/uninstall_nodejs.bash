@@ -7,4 +7,4 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 #apt -y remove nodejs npm
-apt -y purge nodejs npm
+apt -y purge autoremove nodejs npm

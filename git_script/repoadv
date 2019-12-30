@@ -140,6 +140,7 @@ function g_EdgeSense() {
   advgitlab_src support-i-alarm-node.js     EdgeSense/support-i-alarm-node.js.git
   advgitlab_src industrial-protocol-sdk     EdgeSense/industrial-protocol-sdk.git
   advgitlab_src AgentLite-Node.js           EdgeSense/AgentLite-Node.js.git
+  advgitlab_src susi-utils-node.js          EdgeSense/susi-utils-node.js.git
 }
 
 function g_EdgeSense-Open() {

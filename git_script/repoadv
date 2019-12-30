@@ -142,6 +142,7 @@ function g_EdgeSense() {
   advgitlab_src AgentLite-Node.js           EdgeSense/AgentLite-Node.js.git
   advgitlab_src susi-utils-node.js          EdgeSense/susi-utils-node.js.git
   advgitlab_src system-utils-node.js        EdgeSense/system-utils-node.js.git
+  advgitlab_src wiseagent-utils-node.js     EdgeSense/wiseagent-utils-node.js.git
 }
 
 function g_EdgeSense-Open() {

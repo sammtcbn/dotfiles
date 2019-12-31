@@ -146,8 +146,11 @@ function g_EdgeSense() {
 }
 
 function g_EdgeSense-Open() {
-  advgitlab_src advlog-node.js    EdgeSense-Open/advlog-node.js.git
-  advgitlab_src agentlite-node.js EdgeSense-Open/agentlite-node.js.git
+  advgitlab_src susi-utils-node.js   EdgeSense/susi-utils-node.js.git
+  advgitlab_src system-utils-node.js EdgeSense/system-utils-node.js.git
+  advgitlab_src advlog-node.js       EdgeSense-Open/advlog-node.js.git
+  advgitlab_src agentlite-node.js    EdgeSense-Open/agentlite-node.js.git
+  advgitlab_src wiseagent-utils-node.js EdgeSense/wiseagent-utils-node.js.git
   advgitlab_src device-template-node.js EdgeSense-Open/device-template-node.js.git
   advgitlab_src device-service-sdk-node.js EdgeSense-Open/device-service-sdk-node.js.git
 }

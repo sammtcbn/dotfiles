@@ -16,7 +16,7 @@
 
 # 國外新聞直播
 
-[CNN News18 Live](https://www.youtube.com/watch?v=dADa5wCYmL8)
+[CNN News18 Live](https://www.youtube.com/watch?v=dADa5wCYmL8) , [放大播放](https://www.youtube.com/embed/dADa5wCYmL8?start=0&autoplay=1)
 
 [ABC News Live](https://www.youtube.com/watch?v=dNCI18p9wSw)
 

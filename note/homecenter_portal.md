@@ -1,6 +1,10 @@
 # 常用連結
 
+[Google](https://www.google.com/)
+
 [永旭診所](https://www.foreverclinic.com.tw/)
+
+[高速公路1968](https://1968.freeway.gov.tw/)
 
 # 國內新聞直播
 
@@ -22,7 +26,7 @@
 
 [Bloomberg Global News](https://www.youtube.com/watch?v=dp8PhLsUcFE)
 
-[Sky News live](https://www.youtube.com/watch?v=9Auq9mYxFEE)
+[Sky News live](https://www.youtube.com/watch?v=9Auq9mYxFEE) , [放大播放](https://www.youtube.com/embed/9Auq9mYxFEE?start=0&autoplay=1)
 
 # 兒童卡通直播
 
@@ -30,5 +34,13 @@
 
 [Peppa Pig English Episodes LIVE](https://www.youtube.com/watch?v=IuOdmq-4rYw)
 
-[PAW Patrol Cartoons](https://www.youtube.com/watch?v=wmADhGh4TSw)
+[PAW Patrol Cartoons](https://www.youtube.com/watch?v=wmADhGh4TSw) , [放大播放](https://www.youtube.com/embed/wmADhGh4TSw?start=0&autoplay=1)
 
+# 學習直播
+
+[EnglishClass101 TV](https://www.youtube.com/watch?v=NHpEUcySWTM) , [放大播放](https://www.youtube.com/embed/NHpEUcySWTM?start=0&autoplay=1)
+
+# 體育直播
+
+* [Los Angeles Lakers Live Stream](http://nba-streams.xyz/stream/los-angeles-lakers-live-stream/)
+* [Dallas Mavericks Live Stream](http://nba-streams.xyz/stream/dallas-mavericks-live-stream/)

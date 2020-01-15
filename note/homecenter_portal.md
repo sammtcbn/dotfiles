@@ -1,0 +1,34 @@
+# 常用連結
+
+[永旭診所](https://www.foreverclinic.com.tw/)
+
+# 國內新聞直播
+
+[台視新聞](https://www.youtube.com/watch?v=NbjI0cARzjQ)
+
+[三立LIVE新聞](https://www.youtube.com/watch?v=4ZVUmEUFwaY)
+
+[東森新聞](https://www.youtube.com/c/newsebc/live)
+
+[TVBS新聞](https://www.youtube.com/watch?v=Hu1FkdAOws0)
+
+[民視新聞](https://www.youtube.com/watch?v=XxJKnDLYZz4)
+
+# 國外新聞直播
+
+[CNN News18 Live](https://www.youtube.com/watch?v=dADa5wCYmL8)
+
+[ABC News Live](https://www.youtube.com/watch?v=dNCI18p9wSw)
+
+[Bloomberg Global News](https://www.youtube.com/watch?v=dp8PhLsUcFE)
+
+[Sky News live](https://www.youtube.com/watch?v=9Auq9mYxFEE)
+
+# 兒童卡通直播
+
+[Peppa Pig Live](https://www.youtube.com/watch?v=mBSp3qr7fmA)
+
+[Peppa Pig English Episodes LIVE](https://www.youtube.com/watch?v=IuOdmq-4rYw)
+
+[PAW Patrol Cartoons](https://www.youtube.com/watch?v=wmADhGh4TSw)
+

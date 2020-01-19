@@ -44,3 +44,4 @@
 
 * [Los Angeles Lakers Live Stream](http://nba-streams.xyz/stream/los-angeles-lakers-live-stream/)
 * [Dallas Mavericks Live Stream](http://nba-streams.xyz/stream/dallas-mavericks-live-stream/)
+* [Houston Rockets Live Stream](http://nba-streams.xyz/stream/houston-rockets-live-stream/)

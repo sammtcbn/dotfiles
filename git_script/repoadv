@@ -113,6 +113,7 @@ function g_EI-Connect() {
 }
 
 function g_EdgeSense() {
+  advgitlab_src advsc                       EdgeSense/advsc.git
   advgitlab_src advins_template             EdgeSense/advins_template.git
   advgitlab_src AdvPlatform                 EdgeSense/AdvPlatform.git
   advgitlab_src Alarm_msg_service           EdgeSense/Alarm_msg_service.git

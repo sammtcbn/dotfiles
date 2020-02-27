@@ -7,7 +7,7 @@ GH_ID=sammtcbn
 GW_EMAIL=sammtcbn@gmail.com
 
 REPOALL=(
-dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil mqtt-show-msg lineto ssn advdotfiles tsdump.js
+dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil mqtt-show-msg lineto ssn advdotfiles tsdump.js susi-hello
 )
 
 function gh() {

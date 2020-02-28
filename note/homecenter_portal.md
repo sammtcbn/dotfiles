@@ -6,6 +6,11 @@
 
 [高速公路1968](https://1968.freeway.gov.tw/)
 
+# 影劇
+
+[愛奇藝](https://tw.iqiyi.com/)
+* [浪漫醫生金師傅2](https://tw.iqiyi.com/v_19rwi5zu7g.html)
+
 # 國內新聞直播
 
 [台視新聞](https://www.youtube.com/watch?v=NbjI0cARzjQ)

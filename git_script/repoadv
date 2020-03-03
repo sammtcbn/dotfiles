@@ -154,6 +154,7 @@ function g_EdgeSense-Open() {
   advgitlab_src wiseagent-utils-node.js EdgeSense/wiseagent-utils-node.js.git
   advgitlab_src device-template-node.js EdgeSense-Open/device-template-node.js.git
   advgitlab_src device-service-sdk-node.js EdgeSense-Open/device-service-sdk-node.js.git
+  advgitlab_src edgesense-registry-node.js EdgeSense-Open/edgesense-registry-node.js.git
 }
 
 function g_EI-PaaS-RMM() {

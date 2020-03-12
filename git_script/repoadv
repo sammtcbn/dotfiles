@@ -93,7 +93,6 @@ load_advgitlab_account
 load_advsvn_account
 
 function g_github() {
-  git_src APIGateway   https://github.com/ADVANTECH-Corp/APIGateway.git
   git_src WiseSnail    https://github.com/ADVANTECH-Corp/WiseSnail.git
   git_src agentlite    https://github.com/ADVANTECH-Corp/agentlite.git
 }
@@ -117,6 +116,7 @@ function g_EdgeSense() {
   advgitlab_src advins_template             EdgeSense/advins_template.git
   advgitlab_src AdvPlatform                 EdgeSense/AdvPlatform.git
   advgitlab_src Alarm_msg_service           EdgeSense/Alarm_msg_service.git
+  advgitlab_src APIGateway                  EdgeSense/APIGateway.git
   advgitlab_src device-odbc                 EdgeSense/device-odbc.git
   advgitlab_src device-modbus-master        EdgeSense/device-modbus-master.git
   advgitlab_src device-opcua-client-node.js EdgeSense/device-opcua-client-node.js.git

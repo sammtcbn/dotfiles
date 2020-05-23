@@ -1,0 +1,30 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2020.5.19
+
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage:"
+    echo "  ${ME} [option]"
+    echo "    0/img      - List all docker images"
+    echo "    1/rmimgall - Remove all docker images"
+    exit 1
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+opt=${1}
+
+case $opt in
+    0) ;&
+    img)
+        docker images
+        ;;
+    1) ;&
+    rmimagall)
+        docker images | awk 'NR>1 {print $3}' | xargs -n1 docker rmi -f
+        ;;
+esac

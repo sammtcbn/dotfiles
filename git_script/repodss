@@ -1,0 +1,72 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2020.5.27
+TOPDIR=$(pwd)
+
+GIT_SERVER=gitlab.edgecenter.io
+USE_HTTPS=y
+GIT_ID=
+GIT_PW=
+GIT_EMAIL=
+
+function load_git_account()
+{
+    GIT_AUTH_FILE=~/.config/.advgitlab
+    if [ -f ${GIT_AUTH_FILE} ]; then
+        GIT_ID=`cat ${GIT_AUTH_FILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        GIT_PW=`cat ${GIT_AUTH_FILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+        GIT_EMAIL=`cat ${GIT_AUTH_FILE} | grep EMAIL= | awk 'BEGIN {FS="="}; {print $2}'`
+        #echo "GIT_ID = ${GIT_ID}"
+        #echo "GIT_PW = ${GIT_PW}"
+        #echo "GIT_EMAIL = ${GIT_EMAIL}"
+    fi
+}
+
+function gc()
+{
+    group=$1
+    project=$2
+    folder=$2
+
+    if [ "${USE_HTTPS}" == "y" ]; then
+        url=https://
+    else
+        url=http://
+    fi
+
+    if [ -n "$GIT_ID" ] && [ -n "$GIT_PW" ]; then
+        url=${url}${GIT_ID}:${GIT_PW}@
+    elif [ -n "$GIT_ID" ]; then
+        url=${url}${GIT_ID}@
+    fi
+
+    url=${url}${GIT_SERVER}/${group}/${project}.git
+
+    #echo "${url}"
+    echo ${project}.git ...
+
+    if [ ! -d "${TOPDIR}/${folder}" ]; then
+        cd $TOPDIR || exit 1
+        git clone ${url} || exit 1
+    else
+        cd ${TOPDIR}/${folder} || exit 1
+        git pull || exit 1
+    fi
+
+    if [ -n "$GIT_ID" ]; then
+        cd ${TOPDIR}/${folder} || exit 1
+        git config user.name "${GIT_ID}" || exit 1
+    fi
+
+    if [ -n "$GIT_EMAIL" ]; then
+        cd ${TOPDIR}/${folder} || exit 1
+        git config user.email "${GIT_EMAIL}" || exit 1
+    fi
+}
+
+load_git_account
+
+gc edgesense-ai-server DeviceON
+gc edgesense-ai-server dss-manifest
+gc edgesense-ai-server deployoffline
+gc edgesense-ai-server deployoffline-build

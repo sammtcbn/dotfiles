@@ -1,0 +1,20 @@
+#!/bin/sh
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2020.5.29
+
+#sudo sh -c "apt -y update; apt -y upgrade; apt -y autoremove; apt -y autoclean"
+
+echo "apt -y update ..."
+sudo apt -y update || exit 1
+echo
+
+echo "apt -y upgrade ..."
+sudo apt -y upgrade || exit 1
+echo
+
+echo "apt -y autoremove ..."
+sudo apt -y autoremove || exit 1
+echo
+
+echo "apt -y autoclean ..."
+sudo apt -y autoclean || exit 1

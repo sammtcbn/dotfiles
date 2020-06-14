@@ -8,6 +8,4 @@ cp -f dot/vimrc ~/.vimrc || exit 1
 cp -f dot/dircolors ~/.dircolors || exit 1
 cp -f dot/bash_aliases ~/.bash_aliases || exit 1
 
-sudo cp -f usr_local_bin/* /usr/local/bin || exit 1
-
 echo "setup ok"

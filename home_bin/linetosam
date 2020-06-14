@@ -4,8 +4,8 @@ MSG=
 
 function load_line_token()
 {
-    #CFG=$HOME/.config/.samlinetoken
-    CFG=/usr/local/etc/.samlinetoken
+    CFG=$HOME/.config/.samlinetoken
+    #CFG=/usr/local/etc/.samlinetoken
     if [ -f ${CFG} ]; then
         TOKEN=`awk '{if(NR==1) print $0}' ${CFG}`
     fi

@@ -1,5 +1,0 @@
-#!/bin/bash
-# https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2019.8.7
-msg="update notes"
-git commit -m "${msg}"

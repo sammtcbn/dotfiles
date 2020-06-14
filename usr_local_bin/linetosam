@@ -4,11 +4,19 @@ MSG=
 
 function load_line_token()
 {
-    CFG=$HOME/.config/.samlinetoken
+    #CFG=$HOME/.config/.samlinetoken
+    CFG=/usr/local/etc/.samlinetoken
     if [ -f ${CFG} ]; then
         TOKEN=`awk '{if(NR==1) print $0}' ${CFG}`
     fi
 }
+
+if hash lineto 2> /dev/null; then
+    echo "lineto found"
+else
+    echo "lineto not found"
+    exit 1
+fi
 
 load_line_token
 
@@ -24,5 +32,5 @@ if [ -z "${MSG}" ]; then
     exit 1
 fi
 
-$HOME/bin/lineto -t ${TOKEN} -m "${MSG}"
+lineto -t ${TOKEN} -m "${MSG}"
 echo

@@ -4,7 +4,7 @@
 TOPDIR=$(pwd)
 
 GH_ID=sammtcbn
-GW_EMAIL=sammtcbn@gmail.com
+GH_EMAIL=sammtcbn@gmail.com
 
 REPOALL=(
 dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil mqtt-show-msg lineto ssn ssp advdotfiles tsdump.js susi-hello

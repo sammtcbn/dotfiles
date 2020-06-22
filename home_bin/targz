@@ -1,0 +1,32 @@
+#!/bin/bash
+ME=$(basename $0)
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [folder_name]
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+timestr=$(date '+%Y%m%d-%H%M%S')
+fn=${@}
+outputfn=$fn-${timestr}.tar.gz
+
+if [[ -d ${fn} ]]; then
+    tar zcfv ${outputfn} ${fn}
+elif [[ -f ${fn} ]]; then
+    tar zcfv ${outputfn} ${fn}
+else
+    echo "${fn} doesn't exist"
+    exit 1
+fi
+
+ls -la ${outputfn}

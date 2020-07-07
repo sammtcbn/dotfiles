@@ -32,5 +32,12 @@ if [ -z "${MSG}" ]; then
     exit 1
 fi
 
-lineto -t ${TOKEN} -m "${MSG}"
+if [ -f ${MSG} ]; then
+    # msg is file , so read file to send line
+    lineto -t ${TOKEN} -f "${MSG}"
+else
+    # msg is not a file
+    lineto -t ${TOKEN} -m "${MSG}"
+fi
+
 echo

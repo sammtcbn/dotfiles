@@ -21,6 +21,7 @@ fi
 load_line_token
 
 MSG=${@}
+FN=$1
 
 if [ -z "${TOKEN}" ]; then
     echo token is empty
@@ -32,8 +33,8 @@ if [ -z "${MSG}" ]; then
     exit 1
 fi
 
-if [ -f ${MSG} ]; then
-    # msg is file , so read file to send line
+if [ -f ${FN} ]; then
+    # parameter1 is file , so read file to send line
     lineto -t ${TOKEN} -f "${MSG}"
 else
     # msg is not a file

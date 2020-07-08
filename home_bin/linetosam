@@ -12,7 +12,8 @@ function load_line_token()
 }
 
 if hash lineto 2> /dev/null; then
-    echo "lineto found"
+#    echo "lineto found"
+    :
 else
     echo "lineto not found"
     exit 1
@@ -41,4 +42,4 @@ else
     lineto -t ${TOKEN} -m "${MSG}"
 fi
 
-echo
+#echo

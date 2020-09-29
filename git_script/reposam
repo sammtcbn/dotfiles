@@ -1,32 +1,27 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2020.2.10
+# Written by sammtcbn 2020.9.30
 TOPDIR=$(pwd)
-
-GH_ID=sammtcbn
-GH_EMAIL=sammtcbn@gmail.com
 
 REPOALL=(
 dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil mqtt-show-msg lineto ssn ssp advdotfiles tsdump.js susi-hello
 )
 
-function gh() {
-    domain="github.com"
-    folder=$1
-    project=$1
-    url=https://${GH_ID}@${domain}/${GH_ID}/${project}.git
-    echo "${url} ..."
-    if [ ! -d "${TOPDIR}/${folder}" ]; then
-        cd $TOPDIR || exit 1
-        git clone ${url} || exit 1
+function myclone()
+{
+    url=$1
+    if hash gclone 2> /dev/null; then
+        gclone $url
     else
-        cd ${TOPDIR}/${folder} || exit 1
-        git pull || exit 1
+        git clone $url
     fi
+}
 
-    cd ${TOPDIR}/${folder} || exit 1
-    git config user.name "${GH_ID}" || exit 1
-    git config user.email "${GH_EMAIL}" || exit 1
+function gh() {
+    project=$1
+    url=https://github.com/sammtcbn/${project}.git
+    echo "${url} ..."
+    myclone ${url}
 }
 
 for i in "${REPOALL[@]}";

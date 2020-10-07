@@ -9,4 +9,4 @@ apt -y install automake autoconf
 apt -y install libtool
 apt -y install m4
 apt -y install cmake
-apt -y install subversion
+#apt -y install subversion

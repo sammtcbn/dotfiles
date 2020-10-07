@@ -4,11 +4,14 @@
 # Written by sammtcbn 2018.7.6
 # refer to https://serverfault.com/questions/273238/how-to-run-a-command-multiple-times-using-bash-shell
 ME=$(basename $0)
+number=-1
+interval=60
 
 USAGE_STR="$(cat <<EOF
-Usage: ${ME} [command] [number] [interval]
-    number: run times, -1 for infinite loop
-    interval: interval second
+Usage: ${ME} [-c command] [-n number] [-i interval]
+    -c: command
+    -n: run times, default is infinite loop
+    -i: assign interval second, default 60
 
 EOF
 )"
@@ -19,16 +22,22 @@ function usage()
     exit 0
 }
 
-if [ -z "${1}" ] || [ -z "${2}" ]; then
+while getopts "c:n:i:" opt; do
+    case $opt in
+    c)
+       cmd=$OPTARG
+       ;;
+    n)
+       number=$OPTARG
+       ;;
+    i)
+       interval=$OPTARG
+       ;;
+    esac
+done
+
+if [ -z "${cmd}" ]; then
     usage
-fi
-
-cmd=$1
-number=$2
-interval=0
-
-if [ ! -z "${3}" ]; then
-    interval=$3
 fi
 
 if [ $number -eq -1 ]; then
@@ -36,7 +45,7 @@ if [ $number -eq -1 ]; then
     while :
     do
         $cmd
-        echo "$seq/"
+        #echo "$seq/"
         sleep $interval
         seq=$(($seq + 1))
     done
@@ -46,7 +55,7 @@ fi
 
 for i in `seq $number`; do
     $cmd
-    echo "$i/$number"
+    #echo "$i/$number"
     if [ "$i" == "$number" ]; then
         break
     fi

@@ -1,0 +1,67 @@
+#!/bin/bash
+# Send file to sif
+ME=$(basename $0)
+file=${1}
+
+ip=
+id=
+pw=
+dest=
+
+function usage() {
+    echo "Usage: ${ME} [file1] [file2] [folder1] [folder2] ..."
+    exit 1
+}
+
+function cmd_exists ()
+{
+    if ! type $1> /dev/null 2>&1; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+function load_config()
+{
+    if [ -f ${configfile} ]; then
+        ip=`cat ${configfile} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
+        id=`cat ${configfile} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        pw=`cat ${configfile} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+        dest=`cat ${configfile} | grep DEST= | awk 'BEGIN {FS="="}; {print $2}'`
+        #echo "id= ${ip}"
+        #echo "id = ${id}"
+        #echo "pw = ${pw}"
+        #echo "dest = ${dest}"
+    fi
+}
+
+configfile=~/.config/.${ME}
+
+load_config
+
+echo target is ${id}@${ip}:${dest}
+
+if [ -z "${file}" ]; then
+    usage
+fi
+
+for f in $@; do
+    if [[ -d ${f} ]]; then
+        if cmd_exists sshpass ; then
+            sshpass -p ${pw} scp -r $f ${id}@${ip}:${dest}
+        else
+            scp -r $f ${id}@${ip}:${dest}
+        fi
+    elif [[ -f ${f} ]]; then
+        if cmd_exists sshpass ; then
+            sshpass -p ${pw} scp $f ${id}@${ip}:${dest}
+        else
+            scp $f ${id}@${ip}:${dest}
+        fi
+    else
+        echo "$f not found"
+    fi
+done
+
+echo "done"

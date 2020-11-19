@@ -1,10 +1,10 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2020.11.16
+# Written by sammtcbn 2020.11.19
 TOPDIR=$(pwd)
 
 REPOALL=(
-dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil mqtt-show-msg lineto ssn ssp advdotfiles tsdump.js susi-hello report-sys-info
+dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil mqtt-show-msg lineto ssn ssp advdotfiles tsdump.js susi-hello report-sys-info sgcu
 )
 
 function myclone()

@@ -47,6 +47,7 @@ if [ -z "${file}" ]; then
 fi
 
 for f in $@; do
+    echo ${f}
     if [[ -d ${f} ]]; then
         if cmd_exists sshpass ; then
             sshpass -p ${pw} scp -r $f ${id}@${ip}:${dest}

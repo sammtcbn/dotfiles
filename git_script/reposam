@@ -4,7 +4,7 @@
 TOPDIR=$(pwd)
 
 REPOALL=(
-dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil mqtt-show-msg lineto ssn ssp advdotfiles tsdump.js susi-hello report-sys-info sgcu netplan-apply-daemon device-ss
+dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil mqtt-show-msg lineto ssn ssp advdotfiles tsdump.js susi-hello report-sys-info sgcu netplan-apply-daemon
 )
 
 function myclone()

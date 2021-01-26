@@ -1,3 +1,5 @@
+alias ..='cd ../'
+alias ...='cd ../..'
 alias cd..='cd ..'
 alias cls='clear'
 alias wo='cd ~/work'

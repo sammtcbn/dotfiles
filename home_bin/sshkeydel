@@ -1,0 +1,29 @@
+#!/bin/bash
+# Removes all keys belonging to hostname from a known_hosts file.
+ME=$(basename $0)
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [hostname]
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+myhostname=${1}
+
+ssh_know_hosts_file="$(eval echo ~/.ssh/known_hosts)"
+
+if [ ! -f "$ssh_know_hosts_file" ]; then
+    echo "Known hosts file (${ssh_know_hosts_file}) does not exists"
+    exit 1
+fi
+
+ssh-keygen -f $ssh_know_hosts_file -R $myhostname

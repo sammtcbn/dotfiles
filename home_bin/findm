@@ -1,4 +1,4 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
 # Written by sammtcbn 2017.12.15
-find . -name "Makefile" -type f -not -path '*/\.git/*' -print0 | xargs -0 grep "${1}"
+find . -iname "Makefile" -type f -not -path '*/\.git/*' -print0 | xargs -0 grep "${1}"

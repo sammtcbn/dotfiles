@@ -1,4 +1,4 @@
 #!/bin/bash
 # https://github.com/sammtcbn/dotfiles
 # Written by sammtcbn 2020.7.1
-find . -name "*.go" -type f -not -path '*/\.git/*' -print0 | xargs -0 grep "${1}"
+find . -iname "*.go" -type f -not -path '*/\.git/*' -print0 | xargs -0 grep "${1}"

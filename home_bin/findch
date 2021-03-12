@@ -7,4 +7,4 @@
 
 # method-2
 # refer to https://alvinalexander.com/linux-unix/linux-find-multiple-filenames-patterns-command-example
-find . -type f \( -name "*.c" -o -name "*.h" \) -not -path '*/\.git/*' -print0 | xargs -0 grep "${1}"
+find . -type f \( -iname "*.c" -o -name "*.h" \) -not -path '*/\.git/*' -print0 | xargs -0 grep "${1}"

@@ -1,0 +1,6 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.14
+
+LC_TIME=C
+while sleep 1; do date; cat /proc/meminfo | grep MemAvailable; df -h; done

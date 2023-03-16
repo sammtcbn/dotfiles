@@ -1,0 +1,36 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Last modified by sammtcbn 2019.1.9
+function usage()
+{
+    echo "Usage: $0 [SERVER_IP]"
+    echo "    SERVER_IP: assign MQTT Broker ip, default is localhost,"
+    echo "               or you can use a test broker test.mosquitto.org"
+    exit 0
+}
+
+function cmd_exists ()
+{
+    if ! type $1> /dev/null 2>&1; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+if ! cmd_exists mosquitto_sub ; then
+    echo "mosquitto_sub not found"
+    exit 0
+fi
+
+SERVER=localhost
+TOPIC="hellomqtt/topic"
+
+if [ ! -z "${1}" ]; then
+    SERVER=${1}
+fi
+
+mosquitto_sub -v -h ${SERVER} -t ${TOPIC}
+if [ $? != 0 ]; then
+    usage
+fi

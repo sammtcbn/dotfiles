@@ -1,0 +1,4 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2019.7.9
+mqtt-show-msg -i 127.0.0.1 --topic="#"

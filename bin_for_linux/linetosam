@@ -1,0 +1,45 @@
+#!/bin/bash
+TOKEN=
+MSG=
+
+function load_line_token()
+{
+    CFG=$HOME/.config/.samlinetoken
+    #CFG=/usr/local/etc/.samlinetoken
+    if [ -f ${CFG} ]; then
+        TOKEN=`awk '{if(NR==1) print $0}' ${CFG}`
+    fi
+}
+
+if hash lineto 2> /dev/null; then
+#    echo "lineto found"
+    :
+else
+    echo "lineto not found"
+    exit 1
+fi
+
+load_line_token
+
+MSG=${@}
+FN=$1
+
+if [ -z "${TOKEN}" ]; then
+    echo token is empty
+    exit 1
+fi
+
+if [ -z "${MSG}" ]; then
+    echo msg is empty
+    exit 1
+fi
+
+if [ -f ${FN} ]; then
+    # parameter1 is file , so read file to send line
+    lineto -t ${TOKEN} -f "${MSG}"
+else
+    # msg is not a file
+    lineto -t ${TOKEN} -m "${MSG}"
+fi
+
+#echo

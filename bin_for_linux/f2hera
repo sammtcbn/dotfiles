@@ -1,0 +1,95 @@
+#!/bin/bash
+# Send file to remote server
+ME=$(basename $0)
+file=${1}
+
+ip=
+id=
+pw=
+rootpw=
+dest=/home/${id}
+
+function usage() {
+    echo "Usage: ${ME} [file1] [file2] [folder1] [folder2] ..."
+    exit 1
+}
+
+function cmd_exists ()
+{
+    if ! type $1> /dev/null 2>&1; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+function remote_exec ()
+{
+    if cmd_exists sshpass ; then
+        sshpass -p ${pw} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${id}@${ip} "${@}"
+    else
+        ssh ${id}@${ip} ${@}
+    fi
+}
+
+function remote_root_exec ()
+{
+    sshpass -p ${pw} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${id}@${ip} "echo ${rootpw} | sudo
+-S ${@}"
+}
+
+function install_to_remote ()
+{
+    local src=$1
+    remote_exec mkdir -p ${dest}
+
+    echo ${src}
+
+    if [[ -d ${src} ]]; then
+        if cmd_exists sshpass ; then
+            sshpass -p ${pw} scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $src ${id}@${ip}:${dest}
+        else
+            scp -r $src ${id}@${ip}:${dest}
+        fi
+    elif [[ -f ${src} ]]; then
+        if cmd_exists sshpass ; then
+            sshpass -p ${pw} scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $src ${id}@${ip}:${dest}
+        else
+            scp $src ${id}@${ip}:${dest}
+        fi
+    else
+        echo "$src not found"
+    fi
+}
+
+function load_config()
+{
+    if [ -f ${configfile} ]; then
+        ip=`cat ${configfile} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
+        id=`cat ${configfile} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        pw=`cat ${configfile} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+        rootpw=`cat ${configfile} | grep ROOTPW= | awk 'BEGIN {FS="="}; {print $2}'`
+        dest=`cat ${configfile} | grep DEST= | awk 'BEGIN {FS="="}; {print $2}'`
+        #echo "id= ${ip}"
+        #echo "id = ${id}"
+        #echo "pw = ${pw}"
+        #echo "rootpw = ${rootpw}"
+        #echo "dest = ${dest}"
+    fi
+}
+
+configfile=~/.config/.${ME}
+
+load_config
+
+echo target is ${id}@${ip}:${dest}
+
+if [ -z "${file}" ]; then
+    usage
+fi
+
+for f in $@; do
+    install_to_remote $f
+done
+
+echo "done"

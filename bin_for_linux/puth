@@ -1,0 +1,19 @@
+#!/bin/sh
+# https://github.com/sammtcbn/dotfiles
+# Written by sammtcbn 2017.12.26
+
+UPLOAD_PATH=~/public_html
+
+if [ -z "$1" ]; then
+  echo "Usage : put [File1] [File2] ..."
+  exit 1;
+fi
+
+if [ ! -d "$UPLOAD_PATH" ]; then
+   echo "$UPLOAD_PATH doesn't exist"
+   exit 1;
+fi
+
+for src in $@; do
+  cp -f $src $UPLOAD_PATH
+done

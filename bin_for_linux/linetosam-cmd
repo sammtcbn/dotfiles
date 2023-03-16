@@ -1,0 +1,23 @@
+#!/bin/bash
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage: ${ME} [command]"
+    exit
+}
+
+command=${@}
+
+if [ -z "${command}" ]; then
+    usage
+fi
+
+tmpfile=/tmp/ssp-$(uuidgen -r)
+
+rm -f ${tmpfile}
+
+echo " " >> ${tmpfile}
+${command} >> ${tmpfile}
+linetosam ${tmpfile}
+
+rm -f ${tmpfile}

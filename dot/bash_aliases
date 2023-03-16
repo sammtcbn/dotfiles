@@ -1,0 +1,11 @@
+alias ..='cd ../'
+alias ...='cd ../..'
+alias cd..='cd ..'
+alias cls='clear'
+alias wo='cd ~/work'
+alias tmp='cd ~/tmp'
+alias spe='cd ~/reposam/spe'
+alias ssp='cd ~/reposam/ssp'
+
+# git
+alias groot='cd $(git rev-parse --show-toplevel)'

@@ -1,0 +1,22 @@
+#!/bin/bash
+# https://github.com/sammtcbn/dotfiles
+# Last modified by sammtcbn 2019.1.9
+function usage()
+{
+    echo "Usage: $0 [SERVER_IP]"
+    echo "    SERVER_IP: assign MQTT Broker ip, default is localhost,"
+    echo "               or you can use a test broker test.mosquitto.org"
+    exit 0
+}
+
+SERVER=localhost
+TOPIC="#"
+
+if [ ! -z "${1}" ]; then
+    SERVER=${1}
+fi
+
+mosquitto_sub -v -h ${SERVER} -t ${TOPIC}
+if [ $? != 0 ]; then
+    usage
+fi

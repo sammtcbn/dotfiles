@@ -1,0 +1,27 @@
+#!/bin/bash
+
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage: ${ME} [Container_ID]"
+    exit 1
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+cid=${1}
+
+
+for f in ~/reposam/git-utils/script_linux/*; do 
+  echo $f
+  docker cp $f ${cid}:/bin || exit 1
+done
+
+for f in ~/reposam/utility-scripts/linux/*; do
+  echo $f
+  docker cp $f ${cid}:/bin || exit 1
+done
+
+echo done

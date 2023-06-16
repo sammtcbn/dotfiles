@@ -9,6 +9,7 @@ alias cdwork='[ -f ~/.config/.cdwork ] && cd $(cat ~/.config/.cdwork) || cd ~/wo
 
 alias pushdd="pushd \$PWD > /dev/null"
 alias popdd='popd >/dev/null'
+alias dirss='dirs -v'
 
 # git
 alias groot='cd $(git rev-parse --show-toplevel)'

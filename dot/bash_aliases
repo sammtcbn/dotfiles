@@ -7,5 +7,8 @@ alias ssp='cd ~/reposam/ssp'
 alias cdtmp='cd ~/tmp'
 alias cdwork='[ -f ~/.config/.cdwork ] && cd $(cat ~/.config/.cdwork) || cd ~/work'
 
+alias pushdd="pushd \$PWD > /dev/null"
+alias popdd='popd >/dev/null'
+
 # git
 alias groot='cd $(git rev-parse --show-toplevel)'

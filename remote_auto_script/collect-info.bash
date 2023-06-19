@@ -60,8 +60,28 @@ function remote_root_exec ()
 
 echo ========================================
 
+echo lscpu
+remote_exec lscpu
+
+echo ========================================
+
+echo uname -a
+remote_exec uname -a
+
+echo ========================================
+
+echo lsb_release -a
+remote_exec lsb_release -a
+
+echo ========================================
+
 echo df -h
 remote_exec df -h
+
+echo ========================================
+
+echo mount
+remote_exec mount
 
 echo ========================================
 

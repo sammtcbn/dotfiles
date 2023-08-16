@@ -10,4 +10,6 @@ apt-get -y install cmake
 #apt -y install subversion
 
 apt-get -y install apt-file
+apt-get -y install dos2unix
+
 apt-file update

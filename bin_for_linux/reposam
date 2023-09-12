@@ -7,7 +7,7 @@ dotfiles spe git-utils fpjson libreadini logshow sccu advutil ingrautil ediutil 
 
 function myclone()
 {
-    url=$1
+    local url=$1
     if hash gclone 2> /dev/null; then
         gclone $url
     elif [ -e ~/bin/gclone ]; then
@@ -18,8 +18,8 @@ function myclone()
 }
 
 function gh() {
-    project=$1
-    url=https://github.com/sammtcbn/${project}.git
+    local project=$1
+    local url=https://github.com/sammtcbn/${project}.git
     echo "${url} ..."
     myclone ${url}
 }

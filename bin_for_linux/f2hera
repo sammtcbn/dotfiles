@@ -7,7 +7,7 @@ ip=
 id=
 pw=
 rootpw=
-dest=/home/${id}
+dest=
 
 function usage() {
     echo "Usage: ${ME} [file1] [file2] [folder1] [folder2] ..."
@@ -64,23 +64,38 @@ function install_to_remote ()
 
 function load_config()
 {
+    configfile=~/.config/.${ME}
+
     if [ -f ${configfile} ]; then
         ip=`cat ${configfile} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
         id=`cat ${configfile} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
         pw=`cat ${configfile} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
         rootpw=`cat ${configfile} | grep ROOTPW= | awk 'BEGIN {FS="="}; {print $2}'`
+    fi
+
+    #assign default dest by user home
+    if [ "$id" = "root" ]; then
+        dest="/root"
+    else
+        dest="/home/${id}"
+    fi
+
+    if [ -f ${configfile} ]; then
         dest=`cat ${configfile} | grep DEST= | awk 'BEGIN {FS="="}; {print $2}'`
-        #echo "id= ${ip}"
-        #echo "id = ${id}"
-        #echo "pw = ${pw}"
-        #echo "rootpw = ${rootpw}"
-        #echo "dest = ${dest}"
     fi
 }
 
-configfile=~/.config/.${ME}
+function show_var()
+{
+    echo "ip= ${ip}"
+    echo "id = ${id}"
+    echo "pw = ${pw}"
+    echo "rootpw = ${rootpw}"
+    echo "dest = ${dest}"
+}
 
 load_config
+show_var
 
 echo target is ${id}@${ip}:${dest}
 

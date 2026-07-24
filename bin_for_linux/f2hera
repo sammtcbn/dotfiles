@@ -7,8 +7,8 @@ CONFIG_FILE="${HOME}/.config/.${ME}"
 ip=""
 userid=""
 pw=""
-rootpw=""
 destpath=""
+rootpw=""
 
 sshparameter="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
@@ -29,8 +29,7 @@ function cmd_exists ()
 function remote_exec ()
 {
     if cmd_exists sshpass && [[ -n "${pw}" ]]; then
-        #sshpass -p ${pw} ssh ${sshparameter} ${userid}@${ip} "${@}"
-        SSHPASS="${pw}" sshpass -e ssh ${sshparameter} "${userid}@${ip}" "$@"
+        sshpass -p "${pw}" ssh ${sshparameter} "${userid}@${ip}" "$@"
     else
         ssh ${sshparameter} "${userid}@${ip}" "${@}"
     fi
@@ -40,9 +39,9 @@ function remote_root_exec ()
 {
     if [[ -z "${rootpw}" ]]; then
         echo "Error: rootpw is not set."
-        return 1
+        exit 1
     fi
-    SSHPASS="${pw}" sshpass -e ssh ${sshparameter} "${userid}@${ip}" "echo ${rootpw} | sudo -S ${@}"
+    sshpass -p "${pw}" ssh ${sshparameter} "${userid}@${ip}" "echo ${rootpw} | sudo -S $@"
 }
 
 function install_to_remote ()
@@ -50,8 +49,8 @@ function install_to_remote ()
     local src="$1"
 
     if [[ ! -e "${src}" ]]; then
-        echo "Warning: ${src} not found, skipping..."
-        return 1
+        echo "Error: ${src} not found!"
+        exit 1
     fi
 
     remote_exec mkdir -p "${destpath}"
@@ -60,13 +59,13 @@ function install_to_remote ()
 
     if [[ -d "${src}" ]]; then
         if cmd_exists sshpass && [[ -n "${pw}" ]]; then
-            SSHPASS="${pw}" sshpass -e scp ${sshparameter} -r "${src}" "${userid}@${ip}:${destpath}"
+            sshpass -p "${pw}" scp ${sshparameter} -r "${src}" "${userid}@${ip}:${destpath}"
         else
             scp ${sshparameter} -r "$src" "${userid}@${ip}:${destpath}"
         fi
     elif [[ -f "${src}" ]]; then
         if cmd_exists sshpass && [[ -n "${pw}" ]]; then
-            SSHPASS="${pw}" sshpass -e scp ${sshparameter} "${src}" "${userid}@${ip}:${destpath}"
+            sshpass -p "${pw}" scp ${sshparameter} "${src}" "${userid}@${ip}:${destpath}"
         else
             scp ${sshparameter} "${src}" "${userid}@${ip}:${destpath}"
         fi

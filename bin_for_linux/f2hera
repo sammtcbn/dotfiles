@@ -5,10 +5,10 @@ ME=$(basename "$0")
 CONFIG_FILE="${HOME}/.config/.${ME}"
 
 ip=""
-user_id=""
+userid=""
 pw=""
 rootpw=""
-dest=""
+destpath=""
 
 sshparameter="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
@@ -29,10 +29,10 @@ function cmd_exists ()
 function remote_exec ()
 {
     if cmd_exists sshpass && [[ -n "${pw}" ]]; then
-        #sshpass -p ${pw} ssh ${sshparameter} ${user_id}@${ip} "${@}"
-        SSHPASS="${pw}" sshpass -e ssh ${sshparameter} "${user_id}@${ip}" "$@"
+        #sshpass -p ${pw} ssh ${sshparameter} ${userid}@${ip} "${@}"
+        SSHPASS="${pw}" sshpass -e ssh ${sshparameter} "${userid}@${ip}" "$@"
     else
-        ssh ${sshparameter} "${user_id}@${ip}" "${@}"
+        ssh ${sshparameter} "${userid}@${ip}" "${@}"
     fi
 }
 
@@ -42,7 +42,7 @@ function remote_root_exec ()
         echo "Error: rootpw is not set."
         return 1
     fi
-    SSHPASS="${pw}" sshpass -e ssh ${sshparameter} "${user_id}@${ip}" "echo ${rootpw} | sudo -S ${@}"
+    SSHPASS="${pw}" sshpass -e ssh ${sshparameter} "${userid}@${ip}" "echo ${rootpw} | sudo -S ${@}"
 }
 
 function install_to_remote ()
@@ -54,27 +54,27 @@ function install_to_remote ()
         return 1
     fi
 
-    remote_exec mkdir -p "${dest}"
+    remote_exec mkdir -p "${destpath}"
 
-    echo "Transferring: ${src} -> ${user_id}@${ip}:${dest}"
+    echo "Transferring: ${src} -> ${userid}@${ip}:${destpath}"
 
     if [[ -d "${src}" ]]; then
         if cmd_exists sshpass && [[ -n "${pw}" ]]; then
-            SSHPASS="${pw}" sshpass -e scp ${sshparameter} -r "${src}" "${user_id}@${ip}:${dest}"
+            SSHPASS="${pw}" sshpass -e scp ${sshparameter} -r "${src}" "${userid}@${ip}:${destpath}"
         else
-            scp ${sshparameter} -r "$src" "${user_id}@${ip}:${dest}"
+            scp ${sshparameter} -r "$src" "${userid}@${ip}:${destpath}"
         fi
     elif [[ -f "${src}" ]]; then
         if cmd_exists sshpass && [[ -n "${pw}" ]]; then
-            SSHPASS="${pw}" sshpass -e scp ${sshparameter} "${src}" "${user_id}@${ip}:${dest}"
+            SSHPASS="${pw}" sshpass -e scp ${sshparameter} "${src}" "${userid}@${ip}:${destpath}"
         else
-            scp ${sshparameter} "${src}" "${user_id}@${ip}:${dest}"
+            scp ${sshparameter} "${src}" "${userid}@${ip}:${destpath}"
         fi
     fi
 }
 
 function load_config() {
-    local cfg_ip="" cfg_user_id="" cfg_pw="" cfg_rootpw="" cfg_dest=""
+    local cfg_ip="" cfg_userid="" cfg_pw="" cfg_rootpw="" cfg_destpath=""
 
     if [[ -f "${CONFIG_FILE}" ]]; then
         while IFS='=' read -r key value; do
@@ -84,19 +84,19 @@ function load_config() {
             [[ -z "$key" || "$key" =~ ^# ]] && continue
             case "$key" in
                 IP) cfg_ip="$value" ;;
-                ID) cfg_user_id="$value" ;;
+                ID) cfg_userid="$value" ;;
                 PW) cfg_pw="$value" ;;
                 ROOTPW) cfg_rootpw="$value" ;;
-                DEST) cfg_dest="$value" ;;
+                DEST) cfg_destpath="$value" ;;
             esac
         done < "${CONFIG_FILE}"
     fi
 
     ip="${ip:-$cfg_ip}"
-    user_id="${user_id:-$cfg_user_id}"
+    userid="${userid:-$cfg_userid}"
     pw="${pw:-$cfg_pw}"
     rootpw="${rootpw:-$cfg_rootpw}"
-    dest="${dest:-$cfg_dest}"
+    destpath="${destpath:-$cfg_destpath}"
 
     # 逐一判斷必要變數
     if [[ -z "${ip}" ]]; then
@@ -104,7 +104,7 @@ function load_config() {
         exit 1
     fi
 
-    if [[ -z "${user_id}" ]]; then
+    if [[ -z "${userid}" ]]; then
         echo "Error: Missing required parameter: ID"
         exit 1
     fi
@@ -114,11 +114,11 @@ function load_config() {
         exit 1
     fi
 
-    if [[ -z "${dest}" ]]; then
-        if [[ "${user_id}" == "root" ]]; then
-            dest="/root"
+    if [[ -z "${destpath}" ]]; then
+        if [[ "${userid}" == "root" ]]; then
+            destpath="/root"
         else
-            dest="/home/${user_id}"
+            destpath="/home/${userid}"
         fi
     fi
 }
@@ -127,10 +127,10 @@ function show_var()
 {
     echo "config file is ${CONFIG_FILE}"
     echo "ip = ${ip}"
-    echo "user_id = ${user_id}"
+    echo "userid = ${userid}"
     echo "pw = ${pw}"
     echo "rootpw = ${rootpw}"
-    echo "dest = ${dest}"
+    echo "destpath = ${destpath}"
 }
 
 if [[ $# -eq 0 ]]; then
@@ -140,7 +140,7 @@ fi
 load_config
 #show_var
 
-echo "Target is ${user_id}@${ip}:${dest}"
+echo "Target is ${userid}@${ip}:${destpath}"
 
 for f in "$@"; do
     install_to_remote "$f"

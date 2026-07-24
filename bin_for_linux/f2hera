@@ -1,13 +1,14 @@
 #!/bin/bash
 # Send file to remote server
-ME=$(basename $0)
-file=${1}
+# set -e
+ME=$(basename "$0")
+CONFIG_FILE="${HOME}/.config/.${ME}"
 
-ip=
-id=
-pw=
-rootpw=
-dest=
+ip=""
+user_id=""
+pw=""
+rootpw=""
+dest=""
 
 sshparameter="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
@@ -18,7 +19,7 @@ function usage() {
 
 function cmd_exists ()
 {
-    if ! type $1> /dev/null 2>&1; then
+    if ! type "$1" > /dev/null 2>&1; then
         return 1
     else
         return 0
@@ -27,86 +28,122 @@ function cmd_exists ()
 
 function remote_exec ()
 {
-    if cmd_exists sshpass ; then
-        sshpass -p ${pw} ssh ${sshparameter} ${id}@${ip} "${@}"
+    if cmd_exists sshpass && [[ -n "${pw}" ]]; then
+        #sshpass -p ${pw} ssh ${sshparameter} ${user_id}@${ip} "${@}"
+        SSHPASS="${pw}" sshpass -e ssh ${sshparameter} "${user_id}@${ip}" "$@"
     else
-        ssh ${id}@${ip} ${@}
+        ssh ${sshparameter} "${user_id}@${ip}" "${@}"
     fi
 }
 
 function remote_root_exec ()
 {
-    sshpass -p ${pw} ssh ${sshparameter} ${id}@${ip} "echo ${rootpw} | sudo
--S ${@}"
+    if [[ -z "${rootpw}" ]]; then
+        echo "Error: rootpw is not set."
+        return 1
+    fi
+    SSHPASS="${pw}" sshpass -e ssh ${sshparameter} "${user_id}@${ip}" "echo ${rootpw} | sudo -S ${@}"
 }
 
 function install_to_remote ()
 {
-    local src=$1
-    remote_exec mkdir -p ${dest}
+    local src="$1"
 
-    echo ${src}
+    if [[ ! -e "${src}" ]]; then
+        echo "Warning: ${src} not found, skipping..."
+        return 1
+    fi
 
-    if [[ -d ${src} ]]; then
-        if cmd_exists sshpass ; then
-            sshpass -p ${pw} scp ${sshparameter} -r $src ${id}@${ip}:${dest}
+    remote_exec mkdir -p "${dest}"
+
+    echo "Transferring: ${src} -> ${user_id}@${ip}:${dest}"
+
+    if [[ -d "${src}" ]]; then
+        if cmd_exists sshpass && [[ -n "${pw}" ]]; then
+            SSHPASS="${pw}" sshpass -e scp ${sshparameter} -r "${src}" "${user_id}@${ip}:${dest}"
         else
-            scp -r $src ${id}@${ip}:${dest}
+            scp ${sshparameter} -r "$src" "${user_id}@${ip}:${dest}"
         fi
-    elif [[ -f ${src} ]]; then
-        if cmd_exists sshpass ; then
-            sshpass -p ${pw} scp ${sshparameter} $src ${id}@${ip}:${dest}
+    elif [[ -f "${src}" ]]; then
+        if cmd_exists sshpass && [[ -n "${pw}" ]]; then
+            SSHPASS="${pw}" sshpass -e scp ${sshparameter} "${src}" "${user_id}@${ip}:${dest}"
         else
-            scp $src ${id}@${ip}:${dest}
+            scp ${sshparameter} "${src}" "${user_id}@${ip}:${dest}"
         fi
-    else
-        echo "$src not found"
     fi
 }
 
-function load_config()
-{
-    configfile=~/.config/.${ME}
+function load_config() {
+    local cfg_ip="" cfg_user_id="" cfg_pw="" cfg_rootpw="" cfg_dest=""
 
-    if [ -f ${configfile} ]; then
-        ip=`cat ${configfile} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
-        id=`cat ${configfile} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
-        pw=`cat ${configfile} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
-        rootpw=`cat ${configfile} | grep ROOTPW= | awk 'BEGIN {FS="="}; {print $2}'`
+    if [[ -f "${CONFIG_FILE}" ]]; then
+        while IFS='=' read -r key value; do
+            key=$(echo "$key" | tr -d '\r')
+            value=$(echo "$value" | tr -d '\r')
+
+            [[ -z "$key" || "$key" =~ ^# ]] && continue
+            case "$key" in
+                IP) cfg_ip="$value" ;;
+                ID) cfg_user_id="$value" ;;
+                PW) cfg_pw="$value" ;;
+                ROOTPW) cfg_rootpw="$value" ;;
+                DEST) cfg_dest="$value" ;;
+            esac
+        done < "${CONFIG_FILE}"
     fi
 
-    #assign default dest by user home
-    if [ "$id" = "root" ]; then
-        dest="/root"
-    else
-        dest="/home/${id}"
+    ip="${ip:-$cfg_ip}"
+    user_id="${user_id:-$cfg_user_id}"
+    pw="${pw:-$cfg_pw}"
+    rootpw="${rootpw:-$cfg_rootpw}"
+    dest="${dest:-$cfg_dest}"
+
+    # 逐一判斷必要變數
+    if [[ -z "${ip}" ]]; then
+        echo "Error: Missing required parameter: IP"
+        exit 1
     fi
 
-    if [ -f ${configfile} ]; then
-        dest=`cat ${configfile} | grep DEST= | awk 'BEGIN {FS="="}; {print $2}'`
+    if [[ -z "${user_id}" ]]; then
+        echo "Error: Missing required parameter: ID"
+        exit 1
+    fi
+
+    if [[ -z "${pw}" ]]; then
+        echo "Error: Missing required parameter: PW"
+        exit 1
+    fi
+
+    if [[ -z "${dest}" ]]; then
+        if [[ "${user_id}" == "root" ]]; then
+            dest="/root"
+        else
+            dest="/home/${user_id}"
+        fi
     fi
 }
 
 function show_var()
 {
-    echo "ip= ${ip}"
-    echo "id = ${id}"
+    echo "config file is ${CONFIG_FILE}"
+    echo "ip = ${ip}"
+    echo "user_id = ${user_id}"
     echo "pw = ${pw}"
     echo "rootpw = ${rootpw}"
     echo "dest = ${dest}"
 }
 
-load_config
-show_var
-
-echo target is ${id}@${ip}:${dest}
-
-if [ -z "${file}" ]; then
+if [[ $# -eq 0 ]]; then
     usage
 fi
 
-for f in $@; do
-    install_to_remote $f
+load_config
+#show_var
+
+echo "Target is ${user_id}@${ip}:${dest}"
+
+for f in "$@"; do
+    install_to_remote "$f"
 done
 
-echo "done"
+echo "Done!"

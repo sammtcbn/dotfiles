@@ -9,6 +9,8 @@ pw=
 rootpw=
 dest=
 
+sshparameter="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
 function usage() {
     echo "Usage: ${ME} [file1] [file2] [folder1] [folder2] ..."
     exit 1
@@ -26,7 +28,7 @@ function cmd_exists ()
 function remote_exec ()
 {
     if cmd_exists sshpass ; then
-        sshpass -p ${pw} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${id}@${ip} "${@}"
+        sshpass -p ${pw} ssh ${sshparameter} ${id}@${ip} "${@}"
     else
         ssh ${id}@${ip} ${@}
     fi
@@ -34,7 +36,7 @@ function remote_exec ()
 
 function remote_root_exec ()
 {
-    sshpass -p ${pw} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${id}@${ip} "echo ${rootpw} | sudo
+    sshpass -p ${pw} ssh ${sshparameter} ${id}@${ip} "echo ${rootpw} | sudo
 -S ${@}"
 }
 
@@ -47,13 +49,13 @@ function install_to_remote ()
 
     if [[ -d ${src} ]]; then
         if cmd_exists sshpass ; then
-            sshpass -p ${pw} scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $src ${id}@${ip}:${dest}
+            sshpass -p ${pw} scp ${sshparameter} -r $src ${id}@${ip}:${dest}
         else
             scp -r $src ${id}@${ip}:${dest}
         fi
     elif [[ -f ${src} ]]; then
         if cmd_exists sshpass ; then
-            sshpass -p ${pw} scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $src ${id}@${ip}:${dest}
+            sshpass -p ${pw} scp ${sshparameter} $src ${id}@${ip}:${dest}
         else
             scp $src ${id}@${ip}:${dest}
         fi

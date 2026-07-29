@@ -1,6 +1,4 @@
 #!/bin/bash
-# https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2018.12.21
 function usage()
 {
     echo "Usage: $0 [SERVER_IP]"
@@ -24,14 +22,34 @@ if ! cmd_exists mosquitto_pub ; then
 fi
 
 SERVER=localhost
+#SERVER=test.mosquitto.org
+
 TOPIC="hellomqtt/topic"
-PAYLOAD="Hello"
+
+PAYLOAD1="Hello"
+
+COMMAND="trigger"
+SESSIONID=$(dbus-uuidgen)
+TYPE="CHECK"
+SEVERITY=5
+PAYLOAD2="$(cat <<-EOF
+{
+  "Command": "${COMMAND}",
+  "SessionID": "${SESSIONID}",
+  "Params":{
+      "type": "${TYPE}",
+      "severity": ${SEVERITY}
+  }
+}
+EOF
+)"
 
 if [ ! -z "${1}" ]; then
     SERVER=${1}
 fi
 
-mosquitto_pub -h ${SERVER} -t ${TOPIC} -d -m ${PAYLOAD}
+mosquitto_pub -h ${SERVER} -t ${TOPIC} -d -m "${PAYLOAD1}"
+#mosquitto_pub -h ${SERVER} -t ${TOPIC} -d -m "${PAYLOAD2}"
 if [ $? != 0 ]; then
     usage
 fi

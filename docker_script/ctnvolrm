@@ -1,0 +1,20 @@
+#!/bin/bash
+ME=$(basename $0)
+tool=docker
+
+function usage() {
+    echo "Usage: ${ME} [Volume_Name_1] [Volume_Name_2] ..."
+    exit 1
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+#for volname in $@; do
+#    echo ${tool} volume rm -f ${volname}
+#    ${tool} volume rm -f ${volname}
+#done
+
+echo ${tool} volume rm -f $@
+${tool} volume rm -f $@

@@ -1,0 +1,4 @@
+#!/bin/bash
+tool=docker
+echo ${tool} --version
+${tool} --version

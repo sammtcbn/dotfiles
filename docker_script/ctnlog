@@ -1,0 +1,17 @@
+#!/bin/bash
+ME=$(basename $0)
+tool=docker
+
+function usage() {
+    echo "Usage: ${ME} [Container_ID]"
+    exit 1
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+cid=${1}
+
+echo ${tool} logs ${cid}
+${tool} logs ${cid}

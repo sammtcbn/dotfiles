@@ -1,0 +1,41 @@
+#!/bin/bash
+tool=docker
+
+echo ${tool} network prune -f
+${tool} network prune -f
+echo
+
+echo ${tool} volume prune -f
+${tool} volume prune -f
+echo
+
+echo ${tool} container prune -f
+${tool} container prune -f
+echo
+
+echo ${tool} system prune -f
+${tool} system prune -f
+echo
+
+# remove none tag images
+# refer to https://stackoverflow.com/questions/33913020/docker-remove-none-tag-images
+#${tool} image rm -f $({tool} images -f dangling=true -q)
+imgs=$(${tool} images -f dangling=true -q)
+if [ ! -z "${imgs}" ]; then
+    ${tool} image rm -f ${imgs}
+fi
+
+echo ${tool} network ls
+${tool} network ls
+echo
+
+echo ${tool} volume ls
+${tool} volume ls
+echo
+
+echo ${tool} ps -a
+${tool} ps -a
+echo
+
+echo ${tool} system df
+${tool} system df

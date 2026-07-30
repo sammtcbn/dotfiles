@@ -1,0 +1,4 @@
+#!/bin/bash
+# A script to quickly luanch ubuntu container
+tool=docker
+${tool} run --name ubuntu --rm -it --workdir="/root" ubuntu bash

@@ -1,0 +1,18 @@
+#!/bin/bash
+ME=$(basename $0)
+tool=docker
+
+function usage() {
+    echo "Usage: ${ME} [Container_ID or Container_Name] [New_Image_Name]"
+    exit 1
+}
+
+if [ -z "${1}" ] || [ -z "${2}" ]; then
+    usage
+fi
+
+container=${1}
+img=${2}
+
+echo ${tool} commit ${container} ${img}
+${tool} commit ${container} ${img}

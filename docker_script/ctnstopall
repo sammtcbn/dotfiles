@@ -1,0 +1,3 @@
+#!/bin/bash
+tool=docker
+${tool} stop $(${tool} container ls -a -q)

@@ -1,0 +1,24 @@
+#!/bin/bash
+ME=$(basename $0)
+tool=docker
+
+function usage() {
+    echo "Usage: ${ME} [Container_ID_1] [Container_ID_2] ..."
+    exit 1
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+#ctrid=${1}
+#echo ${tool} rm -f ${ctrid}
+#tool rm -f ${ctrid}
+
+#for ctrid in $@; do
+#    echo ${tool} rm -f ${ctrid}
+#    ${tool} rm -f ${ctrid}
+#done
+
+echo ${tool} rm -f $@
+${tool} rm -f $@

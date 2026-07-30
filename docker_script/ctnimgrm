@@ -1,0 +1,24 @@
+#!/bin/bash
+ME=$(basename $0)
+tool=docker
+
+function usage() {
+    echo "Usage: ${ME} [Image_Name_1] [Image_Name_2] ..."
+    exit 1
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+#name=${1}
+#echo ${tool} rmi -f ${name}
+#${tool} rmi -f ${name}
+
+#for imgname in $@; do
+#    echo ${tool} rmi -f ${imgname}
+#    ${tool} rmi -f ${imgname}
+#done
+
+echo ${tool} rmi -f $@
+${tool} rmi -f $@

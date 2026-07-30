@@ -1,0 +1,28 @@
+#!/bin/bash
+ME=$(basename $0)
+tool=docker
+
+function usage() {
+    echo "Usage:"
+    echo "  ${ME} [option]"
+    echo "    0/img      - List all container images"
+    echo "    1/rmimgall - Remove all container images"
+    exit 1
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+opt=${1}
+
+case $opt in
+    0) ;&
+    img)
+        ${tool} images
+        ;;
+    1) ;&
+    rmimagall)
+        ${tool} images | awk 'NR>1 {print $3}' | xargs -n1 ${tool} rmi -f
+        ;;
+esac

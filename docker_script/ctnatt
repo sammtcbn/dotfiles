@@ -1,0 +1,24 @@
+#!/bin/bash
+ME=$(basename $0)
+tool=docker
+
+function usage() {
+    echo "Usage: ${ME} [Container_ID]"
+}
+
+function container_list() {
+    echo
+    echo Container list:
+    ${tool} ps -a
+}
+
+if [ -z "${1}" ]; then
+    usage
+    container_list
+    exit 1
+fi
+
+cid=${1}
+
+echo ${tool} attach ${cid}
+${tool} attach  ${cid}

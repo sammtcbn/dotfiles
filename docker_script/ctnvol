@@ -1,0 +1,9 @@
+#!/bin/bash
+tool=docker
+if [ -z "${1}" ]; then
+  echo ${tool} volume ls
+  ${tool} volume ls
+else
+  echo ${tool} volume inspect $@
+  ${tool} volume inspect $@
+fi

@@ -1,0 +1,6 @@
+#!/bin/bash
+tool=docker
+#echo ${tool} images | awk 'NR>1 {print $3}' | xargs -n1 ${tool} rmi -f
+#${tool} images | awk 'NR>1 {print $3}' | xargs -n1 ${tool} rmi -f
+
+${tool} rmi -f $(${tool} images -a -q)

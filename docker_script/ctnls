@@ -1,0 +1,19 @@
+#!/bin/bash
+tool=docker
+
+echo ${tool} network ls
+${tool} network ls
+echo
+
+echo ${tool} volume ls
+${tool} volume ls
+echo
+
+# List all tcp port mappings
+# ${tool} ps --format "{{.Ports}}"
+echo all tcp port mappings
+${tool} container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a
+echo
+
+echo ${tool} image ls
+${tool} image ls

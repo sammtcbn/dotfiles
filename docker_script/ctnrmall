@@ -1,0 +1,3 @@
+#!/bin/bash
+tool=docker
+${tool} rm -f $(${tool} container ls -a -q)

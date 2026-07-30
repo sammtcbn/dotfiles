@@ -1,0 +1,3 @@
+#!/bin/bash
+tool=docker
+${tool} start $(${tool} container ls -a -q)
